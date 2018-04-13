@@ -1,0 +1,19 @@
+{
+  "name": "madera",
+  "version": "1.0.0",
+  "description": "TODO",
+  "main": "main.js",
+  "scripts": {
+    "start" : "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LesOrnithorynquesAnonymes/MADERA.git"
+  },
+  "author": "LesOrnythorinquesAnonymes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LesOrnithorynquesAnonymes/MADERA/issues"
+  },
+  "homepage": "https://github.com/LesOrnithorynquesAnonymes/MADERA#readme"
+}
