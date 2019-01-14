@@ -21,6 +21,7 @@
     "electron": "^4.0.1",
     "gulp": "^3.9.1",
     "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.4"
+    "gulp-sourcemaps": "^2.6.4",
+    "mysql": "^2.16.0"
   }
 }

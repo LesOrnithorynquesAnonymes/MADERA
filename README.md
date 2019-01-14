@@ -1,4 +1,8 @@
 ### Installation projet
 
 `npm i -g electron` si electron n'est pas déjà installé en global<br>
+`npm i -g gulp` si gulp n'est pas déjà installé en global<br>
 `npm i`
+
+### Database 
+https://ourcodeworld.com/articles/read/259/how-to-connect-to-a-mysql-database-in-electron-framework 
