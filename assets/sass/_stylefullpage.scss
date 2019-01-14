@@ -1,0 +1,26 @@
+body {
+  @include breakpoint(col-lg) {
+    overflow: hidden;
+  }
+}
+
+main:not(.index) {
+  height: 100vh;
+  @include breakpoint(lg) {
+    padding-top: 10vh !important;
+  }
+}
+
+.clean-block.clean-hero:before {
+  position: unset;
+}
+
+.btn-outline-primary {
+  color: white;
+  background-color: orange;
+  border: 1px solid grey;
+  &:hover {
+    border-color: orange;
+    background-color: lighten(orange, 10%);
+  }
+}

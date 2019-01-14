@@ -1,0 +1,36 @@
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overflow: hidden;
+  background-color: rgb(54,57,63);
+  margin: 0;
+}
+
+#main_nav .nav-link i {
+  font-size: 1.75em;
+  margin-right: 1em;
+  color: rgb(171,172,174);
+  border: 1px dashed #abacae;
+  padding: 12px;
+  border-radius: 50%;
+  background-color: rgb(32,34,37);
+}
+
+#main_nav .nav-link.active i {
+  border: 1px solid #abacae;
+  border-radius: 30%;
+  background-color: #36393f;
+}
+
+#main_nav {
+  background-color: #202225;
+  height: 90px;
+}
+

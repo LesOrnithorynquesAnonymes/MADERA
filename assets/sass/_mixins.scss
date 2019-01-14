@@ -1,0 +1,59 @@
+// *** RESPONSIVE BREAKPOINTS *** //
+///////////////////////////////////
+@mixin breakpoint($point) {
+  @if $point == xxl {
+    @media all and (min-width: 1820px) {@content;}
+  }
+  @else if $point == xl {
+    @media all and (min-width: 1440px) {@content;}
+  }
+  @else if $point == lg {
+    @media all and (min-width: 1024px) {@content;}
+  }
+  @else if $point == md {
+    @media all and (min-width: 768px) {@content;}
+  }
+  @else if $point == sm {
+    @media all and (min-width: 568px)  {@content;}
+  }
+  @else if $point == xs {
+    @media all and (min-width: 375px)  {@content;}
+  }
+  @else if $point == xxs {
+    @media all and (max-width: 374px) and (orientation: portrait) {@content;}
+  }
+  @else if $point == landscape-smartphone {
+    @media all and (max-height: 420px) and (orientation: landscape) {@content;}
+  }
+
+    // landscape
+  @else if $point == md-landscape {
+    @media all and (min-height: 768px) and (orientation: landscape) {@content;}
+  }
+  @else if $point == sm-landscape {
+    @media all and (min-height: 568px) and (orientation: landscape)  {@content;}
+  }
+  @else if $point == xs-landscape {
+    @media all and (min-height: 375px) and (orientation: landscape) {@content;}
+  }
+  @else if $point == xxs-landscape {
+    @media all and (max-height: 374px) and (orientation: landscape) {@content;}
+  }
+
+  // bootstrap
+  @else if $point == col-xl {
+	@media all and (min-width: 1200px) {@content;}
+  }
+  @else if $point == col-lg {
+	@media all and (min-width: 992px) {@content;}
+  }
+  @else if $point == col-md {
+	@media all and (min-width: 768px) {@content;}
+  }
+  @else if $point == col-sm {
+	@media all and (min-width: 576px) {@content;}
+  }
+  @else if $point == col-exsm {
+	@media all and (max-width: 575px) {@content;}
+  }
+}
