@@ -7,7 +7,18 @@ let win;
 
 function createWindow() {
     //Create new window browser.
-    win = new BrowserWindow({width: 800, height: 600});
+    win = new BrowserWindow({
+        width: 1800,
+        height: 1200,
+        icon: 'assets/zds.png',
+        title: 'Madera',
+        maximized: true,
+        center: true,
+        frame: true
+    });
+
+    // DevTool
+    win.webContents.openDevTools();
 
     //Load the first page of the application
     win.loadURL(url.format({
@@ -15,6 +26,12 @@ function createWindow() {
         protocol: 'file:',
         slashed: true
     }));
+
+    // Cet evenement est déclenché lorsque la fenetre est fermée
+    win.on('closed', function () {
+        // réinitialisation de l'objet "window"
+        win = null
+    })
 }
 
 app.on('ready', createWindow);
