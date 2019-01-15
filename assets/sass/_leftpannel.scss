@@ -1,0 +1,22 @@
+.leftpannel {
+  width: 20%;
+  background: #2f3136;
+  height: calc(100vh - 80px);
+  border-right: 2px solid $disc-dark;
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    li.project {
+    padding: 5px 0 5px 15px;
+      color: $disc-gray-icons;
+      &:hover {
+        background-color: $disc-circled-icon;
+        cursor:pointer;
+      }
+    }
+    li.active {
+      color: white;
+      background-color: $disc-circled-icon;
+    }
+  }
+}
