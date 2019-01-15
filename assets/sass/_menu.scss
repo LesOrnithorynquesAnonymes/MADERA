@@ -1,0 +1,39 @@
+nav  {
+  background-color: $disc-light;
+  color:white;
+  a.logo {
+    color: $discord-brand !important;
+    font-weight: bold;
+  }
+  ul {
+    li {
+      a {
+        position:relative;
+        color: $disc-gray-icons !important;
+        border-radius: 50%;
+        background: $disc-circled-icon;
+        width: 50px;
+        height: 50px;
+        line-height: 50px !important;
+        padding: 0 !important;
+        font-size: 1.5em !important;
+        text-align: center;
+        @include breakpoint(col-md) {
+          margin: 10px 0;
+        }
+        span {
+            display:block;
+          position: absolute;
+          left: 70px;
+          top: 0;
+          @include breakpoint(col-lg) {
+          display:none;
+          }
+        }
+        &:hover {
+          color: $white-color !important;
+        }
+      }
+    }
+  }
+}

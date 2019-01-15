@@ -7,5 +7,7 @@
 ### Database 
 https://ourcodeworld.com/articles/read/259/how-to-connect-to-a-mysql-database-in-electron-framework 
 
+https://www.youtube.com/watch?v=oCKDF9BU6cI
+
 ### Online-Offline mode
 https://electronjs.org/docs/tutorial/online-offline-events

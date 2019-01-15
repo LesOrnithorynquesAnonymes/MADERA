@@ -1,9 +1,12 @@
-$discord-color: #1e2833;
-$button-color: #214a80;
-$blue-color: #2980ef;
+$discord-brand: #7289da;
+$disc-light: #36393f;
+$disc-dark: #2f3136;
+$disc-gray-icons: #acadaf;
+$disc-circled-icon: #535559;
+$white-color: white;
 
 @import "mixins";
 @import "stylefullpage";
 @import "login";
+@import "menu";
 @import "home";
-
