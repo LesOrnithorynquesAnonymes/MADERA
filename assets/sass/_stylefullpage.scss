@@ -1,3 +1,15 @@
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+}
+
 body {
   @include breakpoint(col-lg) {
     overflow: hidden;
@@ -5,17 +17,13 @@ body {
 }
 
 main:not(.index) {
-  height: 100vh;
+  //height: 100vh;
   @include breakpoint(lg) {
-    padding-top: 10vh !important;
+    //padding-top: 10vh !important;
   }
 }
 
-.clean-block.clean-hero:before {
-  position: unset;
-}
-
-.btn-outline-primary {
+.btn-primary {
   color: white;
   background-color: orange;
   border: 1px solid grey;

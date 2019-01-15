@@ -1,4 +1,35 @@
 .login-dark {
-  background: url(/assets/img/login.jpg) no-repeat 0 450%;
-  background-size: auto;
+  height: calc(100vh);
+  width: 100%;
+  position: fixed;
+  background: linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url('../../assets/img/login.jpg') no-repeat fixed;
+  background-size: cover;
+  form {
+    @include breakpoint(mobile) {
+      width: 100%;
+      margin-top: 0;
+      max-width: unset;
+    }
+  }
+}
+
+#main_nav .nav-link i {
+  font-size: 1.75em;
+  margin-right: 1em;
+  color: rgb(171, 172, 174);
+  border: 1px dashed #abacae;
+  padding: 12px;
+  border-radius: 50%;
+  background-color: rgb(32, 34, 37);
+}
+
+#main_nav .nav-link.active i {
+  border: 1px solid #abacae;
+  border-radius: 30%;
+  background-color: #36393f;
+}
+
+#main_nav {
+  background-color: #202225;
+  height: 90px;
 }

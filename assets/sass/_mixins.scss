@@ -53,7 +53,7 @@
   @else if $point == col-sm {
 	@media all and (min-width: 576px) {@content;}
   }
-  @else if $point == col-exsm {
+  @else if $point == mobile {
 	@media all and (max-width: 575px) {@content;}
   }
 }

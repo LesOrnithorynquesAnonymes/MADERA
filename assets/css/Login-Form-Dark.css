@@ -10,12 +10,9 @@
   width: 90%;
   background-color: #1e2833;
   padding: 40px;
-  border-radius: 4px;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  top: 31%;
-  left: 50%;
+  border-radius: 5px;
   color: #fff;
+  margin: 10vh auto;
   box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
   opacity: 0.90;
 }
