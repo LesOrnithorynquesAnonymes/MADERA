@@ -22,7 +22,7 @@ function createWindow() {
 
     //Load the first page of the application
     win.loadURL(url.format({
-        pathname: path.join(__dirname, 'views/index.html'),
+        pathname: path.join(__dirname, 'views/notlogged/index.html'),
         protocol: 'file:',
         slashed: true
     }));

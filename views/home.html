@@ -15,12 +15,43 @@
 <nav class="navbar"></nav>
 <main class="home">
     <section class="leftpannel">
+        <div class="add-new-project"><i class="fa fa-plus-circle"></i> Nouveau projet</div>
         <ul>
             <li class="project active">Projet 1</li>
             <li class="project">Projet 2</li>
             <li class="project">Projet 3 </li>
             <li class="project">Projet 4</li>
         </ul>
+    </section>
+    <section class="show-project">
+        <ul class="list-plan">
+            <li class="plan" data-date="01/24/2018">
+                <i class="fa fa-home"></i>
+                <p class="label">Plan 1</p></li>
+            <li class="plan" data-date="01/20/2018">
+                <i class="fa fa-home"></i>
+                <p class="label">Plan 2</p></li>
+            <li class="plan" data-date="09/22/2018">
+                <i class="fa fa-home"></i>
+                <p class="label">Plan 3</p></li>
+            <li class="plan" data-date="07/19/2018">
+                <i class="fa fa-home"></i>
+                <p class="label">Plan 4</p></li>
+            <li class="new-plan" data-date="05/16/2018">
+                <i class="fa fa-plus"></i>
+                <p class="label">Nouveau...</p></li>
+        </ul>
+        <aside class="footer">
+            <i class="fa fa-times-circle close-data"></i>
+            <div class="datas">
+                <div class="name">Bertrand Quichaud</div>
+                <div class="date">01/01/2018</div>
+            </div>
+            <div class="buttons">
+                <button id="edit-plan" class="btn btn-primary">Editer</button>
+                <button id="delete-plan" class="btn btn-primary">Supprimer</button>
+            </div>
+        </aside>
     </section>
 </main>
 

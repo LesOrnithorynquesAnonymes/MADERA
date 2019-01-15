@@ -1,14 +1,12 @@
 nav {
   background-color: $disc-dark;
-  @include breakpoint(lg) {
     height: 80px;
-  }
   a.logo {
     color: $discord-brand !important;
     font-weight: bold;
   }
   .fa-bars {
-    color: $disc-gray-icons;
+    color: $disc-clear-text;
   }
   ul {
     li {
@@ -18,9 +16,9 @@ nav {
       }
       a {
         position: relative;
-        color: $disc-gray-icons !important;
+        color: $disc-clear-text !important;
         border-radius: 50%;
-        background: $disc-circled-icon;
+        background: $disc-medium-gray;
         width: 40px;
         height: 40px;
         line-height: 40px !important;

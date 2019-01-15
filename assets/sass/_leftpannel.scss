@@ -6,17 +6,35 @@
   ul {
     list-style-type: none;
     padding-left: 0;
+    height: 75vh;
+    overflow: auto;
     li.project {
-    padding: 5px 0 5px 15px;
-      color: $disc-gray-icons;
+      padding: 5px 0 5px 15px;
+      color: $disc-clear-text;
+      overflow: hidden;
+      text-overflow: ellipsis;
       &:hover {
-        background-color: $disc-circled-icon;
-        cursor:pointer;
+        background-color: $disc-medium-gray;
+        cursor: pointer;
       }
     }
     li.active {
       color: white;
-      background-color: $disc-circled-icon;
+      background-color: $disc-medium-gray;
+    }
+  }
+  .add-new-project {
+    color: $disc-clear-text;
+    border: 1px solid $disc-medium-gray;
+    padding: 5px;
+    margin-bottom: 10px;
+    i {
+      padding-right: 15px;
+    }
+    &:hover {
+      color:white;
+      background-color: $disc-medium-gray;
+      cursor:pointer;
     }
   }
 }

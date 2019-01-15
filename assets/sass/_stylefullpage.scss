@@ -4,6 +4,7 @@ html {
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: transparent;
+  color: $disc-clear-text;
 }
 
 body {
@@ -19,17 +20,18 @@ body {
 main {
   background-color: $disc-light;
   height: 100vh; // taille du menu;
-  @include breakpoint(lg) {
     padding-top: 80px !important;
-  }
 }
 
 .btn-primary {
   color: white;
-  background-color: orange;
-  border: 1px solid grey;
+  background-color: $discord-brand;
+  border: 0;
   &:hover {
-    border-color: orange;
-    background-color: lighten(orange, 10%);
+    background-color: lighten($discord-brand, 10%);
+  }
+  &:active, &:focus {
+    outline:none;
+    box-shadow: unset;
   }
 }

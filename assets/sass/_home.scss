@@ -1,3 +1,103 @@
 main.home {
+  display: flex;
+  .show-project {
+    height: calc(100vh - 80px);
+    width: 80%;
+    overflow: auto;
+    ul.list-plan {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 5vh;
+      li.plan, li.new-plan {
+        position: relative;
+        width: 180px;
+        height: 180px;
+        border-radius: 5px;
+        margin: 15px;
+        i {
+          position: absolute;
+          color: $disc-clear-text;
+          font-size: 5em;
+          transform: translate(-50%, -50%);
+          left: 50%;
+          top: 50%;
+          border-radius: 5px;
+        }
+        p.label {
+          position: absolute;
+          bottom: 0;
+          transform: translate(-50%);
+          left: 50%;
+          margin-bottom: 0;
+          color: $disc-clear-text;
+          font-weight: bold;
 
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      li.plan {
+        i {
+          padding: 20px;
+          border: 2px solid $disc-dark;
+        }
+      }
+      li.new-plan {
+        i {
+          padding: 20px 30px;
+          border: 5px dashed $disc-dark;
+        }
+        &:hover {
+          background-color: $discord-brand;
+          i, .label {
+            color: white;
+
+          }
+        }
+      }
+      li.active {
+        background-color: $discord-brand;
+        i, .label {
+          color: white;
+
+        }
+      }
+    }
+    aside.footer {
+      i.close-data {
+        color: $disc-clear-text;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        left: 50%;
+        top: 0;
+        font-size: 1.7em;
+        &:hover {
+          color:$disc-medium-gray;
+          cursor:pointer;
+        }
+      }
+      display:none;
+      position: absolute;
+      bottom: 0;
+      width: 80%;
+      height: 80px;
+      background: $disc-medium;
+      justify-content: space-between;
+      align-items: center;
+      .datas {
+        color: $disc-clear-text;
+        margin-left:10px;
+      }
+      .buttons {
+        button {
+
+        }
+      }
+    }
+    aside.footer.active {
+      display:flex;
+    }
+  }
 }
