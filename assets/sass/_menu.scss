@@ -1,33 +1,43 @@
-nav  {
-  background-color: $disc-light;
-  color:white;
+nav {
+  background-color: $disc-dark;
+  @include breakpoint(lg) {
+    height: 80px;
+  }
   a.logo {
     color: $discord-brand !important;
     font-weight: bold;
   }
   ul {
     li {
+          margin: 10px 0;
+        @include breakpoint(col-lg) {
+          margin: 0;
+        }
       a {
-        position:relative;
+        position: relative;
         color: $disc-gray-icons !important;
         border-radius: 50%;
         background: $disc-circled-icon;
-        width: 50px;
-        height: 50px;
-        line-height: 50px !important;
+        width: 40px;
+        height: 40px;
+        line-height: 40px !important;
         padding: 0 !important;
-        font-size: 1.5em !important;
+        font-size: 1.2em !important;
         text-align: center;
         @include breakpoint(col-md) {
-          margin: 10px 0;
+          width: 50px;
+          height: 50px;
+          line-height: 50px !important;
+          padding: 0 !important;
+          font-size: 1.5em !important;
         }
         span {
-            display:block;
+          display: block;
           position: absolute;
           left: 70px;
           top: 0;
           @include breakpoint(col-lg) {
-          display:none;
+            display: none;
           }
         }
         &:hover {

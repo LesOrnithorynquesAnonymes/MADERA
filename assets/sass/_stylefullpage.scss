@@ -16,10 +16,11 @@ body {
   }
 }
 
-main:not(.index) {
-  //height: 100vh;
+main {
+  background-color: $disc-light;
+  height: 100vh; // taille du menu;
+    padding-top: 80px !important;
   @include breakpoint(lg) {
-    //padding-top: 10vh !important;
   }
 }
 
