@@ -15,7 +15,7 @@ $(function () {
     // Gestion du Active
     $('.leftpannel li').on('click', function (e) {
         if (!$(this).hasClass('active')) {
-            $('.leftpannel .project').removeClass('active');
+            $('.leftpannel li').removeClass('active');
             $(this).addClass('active')
         }
     });
@@ -34,10 +34,10 @@ $(function () {
             $('.footer .date').html(date);
         }
         // FERMER LE PANNEL DU BAS
+    });
         $('.close-data').on('click', function (e) {
             $('.footer').hide();
         })
-    });
 
     $('.add-new-project').on('click', function (e) {
         swalMadera({
