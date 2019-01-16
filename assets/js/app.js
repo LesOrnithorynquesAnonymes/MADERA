@@ -53,6 +53,8 @@ $(function () {
            "</form>",
        }).then(function(isConfirm) {
             if (isConfirm.value === true) {
+                let titre = $('#title-proj').val();
+                let description = $('#desc-proj').val();
                 console.log('Valider Formulaire + save en database ici')
             }
         })
