@@ -1,9 +1,6 @@
 main.home {
   display: flex;
   .show-project {
-    height: calc(100vh - 80px);
-    width: calc(100% - #{$leftpannel});
-    overflow: auto;
     ul.list-plan {
       list-style-type: none;
       display: flex;

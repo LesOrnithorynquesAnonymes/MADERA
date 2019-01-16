@@ -8,7 +8,7 @@
     padding-left: 0;
     height: 75vh;
     overflow: auto;
-    li.project {
+    li {
       padding: 5px 0 5px 15px;
       color: $disc-clear-text;
       overflow: hidden;
@@ -23,7 +23,7 @@
       background-color: $disc-medium-gray;
     }
   }
-  .add-new-project {
+  .new {
     color: $disc-clear-text;
     border: 1px solid $disc-medium-gray;
     padding: 5px;
@@ -32,9 +32,15 @@
       padding-right: 15px;
     }
     &:hover {
-      color:white;
+      color: white;
       background-color: $disc-medium-gray;
-      cursor:pointer;
+      cursor: pointer;
     }
   }
+}
+
+.rightpannel {
+  height: calc(100vh - 80px);
+  width: calc(100% - #{$leftpannel});
+  overflow: auto;
 }
