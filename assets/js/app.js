@@ -1,5 +1,12 @@
 $(function () {
 
+    // ################## MENU ##################
+    // trick pour poser le active du menu sur la bonne page
+    let origin = window.location.origin;
+    let url = window.location.pathname;
+    let urlSplitted = url.split('/')[3];
+    $('nav li a[href="' + urlSplitted + '"]').addClass('active');
+
     // ########## LEFT PANNEL ##########
     $('.leftpannel .project').on('click', function (e) {
         if (!$(this).hasClass('active')) {

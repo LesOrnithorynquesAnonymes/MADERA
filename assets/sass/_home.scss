@@ -2,7 +2,7 @@ main.home {
   display: flex;
   .show-project {
     height: calc(100vh - 80px);
-    width: 80%;
+    width: 75%;
     overflow: auto;
     ul.list-plan {
       list-style-type: none;
@@ -66,6 +66,14 @@ main.home {
       }
     }
     aside.footer {
+      display:none;
+      position: absolute;
+      bottom: 0;
+      width: 75%;
+      height: 80px;
+      background: $disc-medium;
+      justify-content: space-between;
+      align-items: center;
       i.close-data {
         color: $disc-clear-text;
         position: absolute;
@@ -78,14 +86,6 @@ main.home {
           cursor:pointer;
         }
       }
-      display:none;
-      position: absolute;
-      bottom: 0;
-      width: 80%;
-      height: 80px;
-      background: $disc-medium;
-      justify-content: space-between;
-      align-items: center;
       .datas {
         color: $disc-clear-text;
         margin-left:10px;

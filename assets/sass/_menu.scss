@@ -45,6 +45,10 @@ nav {
           color: $white-color !important;
         }
       }
+      a.active {
+        color: $discord-brand !important;
+        border: 2px solid $discord-brand !important;
+      }
     }
     li.logout {
       position:absolute;
