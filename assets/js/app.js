@@ -11,6 +11,11 @@ $(function () {
         cancelButtonColor: '#535559'
     });
 
+    // FERMER LE FOOTER PANNEL
+    $('.close-data').on('click', function (e) {
+        $('.footer').hide();
+    });
+
     // ########## LEFT PANNEL ##########
     // Gestion du Active
     $('.leftpannel li').on('click', function (e) {
@@ -33,11 +38,8 @@ $(function () {
             $('.footer .name').html(name);
             $('.footer .date').html(date);
         }
-        // FERMER LE PANNEL DU BAS
     });
-        $('.close-data').on('click', function (e) {
-            $('.footer').hide();
-        })
+
 
     $('.add-new-project').on('click', function (e) {
         swalMadera({
@@ -71,4 +73,7 @@ $(function () {
             }
         })
     });
+
+    // ##########  DEVIS PAGE ##########
+
 });
