@@ -33,21 +33,28 @@ $(function () {
         })
     });
 
+    const swalMadera = Swal.mixin({
+        allowEnterKey: true,
+        background: '',
+        customClass: 'swal-modal',
+        showCancelButton: true,
+        cancelButtonText: 'Annuler',
+        confirmButtonText: 'Valider',
+        confirmButtonColor: '#535559',
+        cancelButtonColor: '#535559'
+    });
+
     $('.add-new-project').on('click', function(e) {
-       swal({
+        swalMadera({
           title:'<div class="title">Ajouter un nouveau projet</div>',
            html:"<form>" +
            "<div><label for='title-proj'>Titre :</label><input type='text' id='title-proj' placeholder='Titre...'></div>" +
-           "<div><label for='title-proj'>Description :</label><textarea type='text' id='title-proj' placeholder='Description...'></textarea></div>" +
+           "<div><label for='desc-proj'>Description :</label><textarea type='text' id='desc-proj' placeholder='Description...'></textarea></div>" +
            "</form>",
-           allowEnterKey: true,
-           background: '',
-           customClass: 'swal-modal',
-           showCancelButton: true,
-           cancelButtonText: 'Annuler',
-           confirmButtonText: 'Valider',
-           confirmButtonColor: '#535559',
-           cancelButtonColor: '#535559'
-       });
+       }).then(function(isConfirm) {
+            if (isConfirm.value === true) {
+                console.log('Valider Formulaire + save en database ici')
+            }
+        })
     });
 });
