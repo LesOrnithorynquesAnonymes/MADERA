@@ -1,5 +1,4 @@
 $(function () {
-
     // ################## MENU ##################
     // trick pour poser le active du menu sur la bonne page
     let origin = window.location.origin;
@@ -20,6 +19,7 @@ $(function () {
         let $this = $(this);
         let name = e.currentTarget.innerText;
         let date = $this.data('date');
+        // OUVRIR LE PANNEL DU BAS
         if (!$this.hasClass('active')) {
             $('.list-plan .plan').removeClass('active');
             $this.addClass('active');
@@ -27,9 +27,27 @@ $(function () {
             $('.footer .name').html(name);
             $('.footer .date').html(date);
         }
-
+        // FERMER LE PANNEL DU BAS
         $('.close-data').on('click', function(e) {
             $('.footer').hide();
         })
+    });
+
+    $('.add-new-project').on('click', function(e) {
+       swal({
+          title:'<div class="title">Ajouter un nouveau projet</div>',
+           html:"<form>" +
+           "<div><label for='title-proj'>Titre :</label><input type='text' id='title-proj' placeholder='Titre...'></div>" +
+           "<div><label for='title-proj'>Description :</label><textarea type='text' id='title-proj' placeholder='Description...'></textarea></div>" +
+           "</form>",
+           allowEnterKey: true,
+           background: '',
+           customClass: 'swal-modal',
+           showCancelButton: true,
+           cancelButtonText: 'Annuler',
+           confirmButtonText: 'Valider',
+           confirmButtonColor: '#535559',
+           cancelButtonColor: '#535559'
+       });
     });
 });
