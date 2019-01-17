@@ -11,6 +11,12 @@ $(function () {
         cancelButtonColor: '#535559'
     });
 
+    // MENU
+    $('.navbar-toggler').on('click', function(e) {
+       const nav = $(this).closest('nav');
+
+    });
+
     // FERMER LE FOOTER PANNEL
     $('.close-data').on('click', function (e) {
         $('.footer').hide();

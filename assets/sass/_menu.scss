@@ -1,6 +1,6 @@
 nav {
   background-color: $disc-dark;
-    height: 80px;
+    //height: 80px;
   a.logo {
     color: $discord-brand !important;
     font-weight: bold;
@@ -55,4 +55,8 @@ nav {
       right: 0;
     }
   }
+}
+
+nav.height-resp {
+  height: 80px;
 }
