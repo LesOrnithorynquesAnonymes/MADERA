@@ -1,5 +1,14 @@
 main.devis {
   aside.footer {
-    display:flex;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 10px;
+  }
+}
+
+
+@media print {
+  nav, .leftpannel, aside.footer {
+    display:none;
   }
 }

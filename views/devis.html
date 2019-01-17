@@ -21,17 +21,18 @@
             <option value="client2">Client 2</option>
             <option value="client3">Client 3</option>
         </select>
-        <select id="select-project" title="Clients">
+        <select id="select-project" title="Projets">
             <option value="projet1">Projet 1</option>
             <option value="projet2">Projet 2</option>
             <option value="projet3">Projet 3</option>
         </select>
+        <button id="scheduled-payment" class="btn btn-primary" title="Plan de paiement du projet sélectionné">Plan de paiement</button>
     </section>
     <section class="rightpannel show-devis">
         <aside class="footer active">
             <div class="buttons">
-                <button id="edit-plan" class="btn btn-primary">Editer</button>
-                <button id="delete-plan" class="btn btn-primary">Supprimer</button>
+                <a href="/path/to/pdf" class="btn btn-primary" target="_blank" title="Exporter au format PDF"><i class="fa fa-file"></i> Générer</a>
+                <a href="javascript:window.print()" class="btn btn-primary" title="Imprimer le devis"><i class="fa fa-print"></i> Imprimer</a>
             </div>
         </aside>
     </section>
