@@ -38,6 +38,21 @@
       cursor: pointer;
     }
   }
+
+  select {
+    background: $disc-light;
+    padding: 5px 10px;
+    width: 80%;
+    max-width: 400px;
+    color: $disc-clear-text;
+    border: 1px solid $disc-dark;
+    margin-top: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .rightpannel {
