@@ -1,3 +1,26 @@
 main.client {
-
+  .client {
+    padding: 15px;
+    color: $disc-clear-text !important;
+    > div {
+      margin-top: 5px;
+    }
+    .nom, .prenom {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .email a {
+      color: $disc-clear-text;
+    }
+  }
+  .projects {
+    padding: 15px;
+    color: $disc-clear-text;
+    ul {
+      list-style-type: none;
+      li a {
+        color: $disc-clear-text;
+      }
+    }
+  }
 }

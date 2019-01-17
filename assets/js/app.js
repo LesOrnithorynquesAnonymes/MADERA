@@ -12,8 +12,8 @@ $(function () {
     });
 
     // MENU
-    $('.navbar-toggler').on('click', function(e) {
-       const nav = $(this).closest('nav');
+    $('.navbar-toggler').on('click', function (e) {
+        const nav = $(this).closest('nav');
 
     });
 
@@ -69,12 +69,18 @@ $(function () {
             title: '<div class="title">Ajouter un nouveau client</div>',
             html: "<form>" +
             "<div><label for='nom-cli'>Nom :</label><input type='text' id='nom-cli' placeholder='Nom...'></div>" +
-            "<div><label for='prenom-cli'>Prenom :</label><textarea type='text' id='prenom-cli' placeholder='Prenom...'></textarea></div>" +
+            "<div><label for='prenom-cli'>Prenom :</label><input type='text' id='prenom-cli' placeholder='Prenom...'/></div>" +
+            "<div><label for='mail-cli'>Email :</label><input type='email' id='prenom-cli' placeholder='Email...'/></div>" +
+            "<div><label for='tel-cli'>Téléphone :</label><input type='text' id='tel-cli' placeholder='Téléphone...'/></div>" +
+            "<div><label for='ville-cli'>Ville :</label><input type='text' id='ville-cli' placeholder='Ville...'/></div>" +
             "</form>",
         }).then(function (isConfirm) {
             if (isConfirm.value === true) {
                 let nom = $('#nom-cli').val();
                 let prenom = $('#prenom-cli').val();
+                let mail = $('#mail-cli').val();
+                let phone = $('#tel-cli').val();
+                let city = $('#cville-cli').val();
                 console.log(nom + ' ' + prenom + ' //// Valider Formulaire + save en database ici')
             }
         })

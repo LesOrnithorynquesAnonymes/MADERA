@@ -18,7 +18,8 @@ body {
 main {
   background-color: $disc-light;
   height: 100vh; // taille du menu;
-    padding-top: 80px !important;
+  padding-top: 80px !important;
+  display:flex;
 }
 
 .btn-primary {
@@ -29,7 +30,7 @@ main {
     background-color: lighten($discord-brand, 10%);
   }
   &:active, &:focus {
-    outline:none;
+    outline: none;
     box-shadow: unset;
   }
 }
@@ -37,14 +38,14 @@ main {
 .swal-modal {
   form {
     > div {
-      display:flex;
+      display: flex;
       flex-direction: column;
       margin-top: 5px;
     }
     label {
-    font-weight: bold;
+      font-weight: bold;
     }
-    input, textarea{
+    input, textarea {
       width: 75%;
       padding: 5px;
       margin: 0 auto;
