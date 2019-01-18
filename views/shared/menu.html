@@ -7,7 +7,7 @@
             <li class="nav-item" title="Projet"><a class="nav-link" href="home.html"><i class="fa fa-list-alt"></i><span>Projet</span></a></li>
             <li class="nav-item" title="Client"><a class="nav-link" href="clients.html"><i class="fa fa-users"></i><span>Client</span></a></li>
             <li class="nav-item" title="Devis"><a class="nav-link" href="devis.html"><i class="fa fa-file-text"></i><span>Devis</span></a></li>
-            <li class="nav-item" title="Devis"><a class="nav-link" href="../plugin/example"><i class="fa fa-file-text"></i><span>TESTTEST</span></a></li>
+            <li class="nav-item" title="Devis"><a class="nav-link" href="../plugin/plan"><i class="fa fa-file-text"></i><span>TESTTEST</span></a></li>
             <li class="nav-item logout" title="Se déconnecter"><a class="nav-link" href="#"><i class="fa fa-sign-out"></i><span>Déconnexion</span></a></li>
         </ul>
     </div>
@@ -22,7 +22,6 @@
         let url = window.location.pathname;
         let urlSplitted = url.split('/')[3];
         $('nav li a[href="' + urlSplitted + '"]').addClass('active');
-
 
         // MENU HEIGHT
         let nav = $('.navbar');
@@ -39,5 +38,4 @@
         });
 
     });
-
 </script>
