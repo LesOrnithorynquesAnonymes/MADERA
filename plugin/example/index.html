@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MADERA - Plans</title>
+
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.min.css">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/example.css" rel="stylesheet">
+    <link href="../../assets/css/app.css" rel="stylesheet">
+
+    <script src="js/three.min.js"></script>
+    <script src="js/blueprint3d.js"></script>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <script src="js/items.js"></script>
+    <script src="js/example.js"></script>
+</head>
+
+<body>
+
+<div class="container-fluid plan">
+    <div class="row main-row">
+        <!-- Left Column -->
+        <div class="col-xs-3 sidebar leftpannel">
+            <!-- Main Navigation -->
+            <ul class="nav nav-sidebar">
+                <li id="design_tab">
+                    <a href="#">Vue du plan<span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                </li>
+                <li id="floorplan_tab">
+                    <a href="#">Editer le plan<span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                </li>
+                <li id="items_tab">
+                    <a href="#">Ajouter un objet<span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                </li>
+                <li class="back-to-plan">
+                    <a href="../../views/home.html">Retour<span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                </li>
+            </ul>
+            <hr/>
+
+            <!-- Context Menu -->
+            <div id="context-menu">
+                <div style="margin: 0 20px">
+                    <span id="context-menu-name" class="lead"></span>
+                    <br/><br/>
+                    <button class="btn btn-primary" id="context-menu-delete">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        Delete Item
+                    </button>
+                    <br/>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Adjust Size</div>
+                        <div class="panel-body" style="color: #333333">
+
+                            <div class="form form-horizontal" class="lead">
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label">
+                                        Width
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="item-width">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label">
+                                        Depth
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="item-depth">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label">
+                                        Height
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="item-height">
+                                    </div>
+                                </div>
+                            </div>
+                            <small><span class="text-muted">Measurements in inches.</span></small>
+                        </div>
+                    </div>
+
+                    <label><input type="checkbox" id="fixed"/> Lock in place</label>
+                    <br/><br/>
+                </div>
+            </div>
+
+            <!-- Floor textures -->
+            <div id="floorTexturesDiv" style="display:none; padding: 0 20px">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Adjust Floor</div>
+                    <div class="panel-body" style="color: #333333">
+
+                        <div class="col-sm-6" style="padding: 3px">
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light_fine_wood.jpg" texture-stretch="false" texture-scale="300">
+                                <img alt="Thumbnail light fine wood" src="rooms/thumbnails/thumbnail_light_fine_wood.jpg"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wall Textures -->
+            <div id="wallTextures" style="display:none; padding: 0 20px">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Adjust Wall</div>
+                    <div class="panel-body" style="color: #333333">
+                        <div class="col-sm-6" style="padding: 3px">
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/marbletiles.jpg" texture-stretch="false" texture-scale="300">
+                                <img alt="Thumbnail marbletiles" src="rooms/thumbnails/thumbnail_marbletiles.jpg"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-6" style="padding: 3px">
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wallmap_yellow.png" texture-stretch="true" texture-scale="">
+                                <img alt="Thumbnail wallmap yellow" src="rooms/thumbnails/thumbnail_wallmap_yellow.png"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-6" style="padding: 3px">
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light_brick.jpg" texture-stretch="false" texture-scale="100">
+                                <img alt="Thumbnail light brick" src="rooms/thumbnails/thumbnail_light_brick.jpg"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-xs-9 main">
+
+            <!-- 3D Viewer -->
+            <div id="viewer">
+
+                <div id="main-controls">
+                    <a href="#" class="btn btn-primary" id="new">Nouveau Plan</a>
+                    <a href="#" class="btn btn-primary" id="saveFile">Sauvegarder Plan</a>
+                    <a class="btn btn-primary btn-file"><input type="file" class="hidden-input" id="loadFile">Charger Plan</a>
+                </div>
+
+                <div id="camera-controls">
+                    <a href="#" class="btn btn-primary" id="zoom-out" title="Zoom +"><i class="fa fa-minus"></i></a>
+                    <a href="#" class="btn btn-primary" id="reset-view"><i class="fa fa-home"></i></a>
+                    <a href="#" class="btn btn-primary" id="zoom-in"><i class="fa fa-plus"></i></a>
+
+                    <span>&nbsp;</span>
+
+                    <a class="btn btn-primary " href="#" id="move-left"><i class="fa fa-arrow-left"></i></a>
+                    <span class="btn-group-vertical">
+                <a class="btn btn-primary" href="#" id="move-up"><i class="fa fa-arrow-up"></i></a>
+                <a class="btn btn-primary" href="#" id="move-down"><i class="fa fa-arrow-down"></i></a>
+              </span>
+                    <a class="btn btn-primary " href="#" id="move-right"><i class="fa fa-arrow-right"></i></a>
+                </div>
+
+                <div id="loading-modal">
+                    <h1>Loading...</h1>
+                </div>
+            </div>
+
+            <!-- 2D Floorplanner -->
+            <div id="floorplanner">
+                <canvas id="floorplanner-canvas"></canvas>
+                <div id="floorplanner-controls">
+
+                    <button id="move" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-move"></span>
+                        Bouger les murs
+                    </button>
+                    <button id="draw" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        Dessiner des murs
+                    </button>
+                    <button id="delete" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        Supprimer des murs
+                    </button>
+                    <span class="pull-right">
+                <button class="btn btn-primary" id="update-floorplan">Valider &raquo;</button>
+              </span>
+                </div>
+                <div id="draw-walls-hint">Appuyer sur "Echap" pour arrêter de tracer un mur</div>
+            </div>
+
+            <!-- Add Items -->
+            <div id="add-items">
+                <div class="row" id="items-wrapper">
+
+                    <!-- Items added here by items.js -->
+                </div>
+            </div>
+
+        </div>
+        <!-- End Right Column -->
+    </div>
+</div>
+
+</body>
+</html>
