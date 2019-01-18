@@ -1,6 +1,6 @@
 nav {
   background-color: $disc-dark;
-    //height: 80px;
+  //height: 80px;
   a.logo {
     color: $discord-brand !important;
     font-weight: bold;
@@ -51,8 +51,10 @@ nav {
       }
     }
     li.logout {
-      position:absolute;
-      right: 0;
+      @include breakpoint(col-lg) {
+        margin-left: 30px;
+
+      }
     }
   }
 }

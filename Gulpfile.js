@@ -3,7 +3,8 @@ let sass = require('gulp-sass');
 let sourcemaps = require('gulp-sourcemaps');
 
 let dest = [
-    './assets/sass/*.scss'
+    './assets/sass/*.scss',
+    './blueprint3d/example/sass/*.scss',
 ];
 
 let src = [

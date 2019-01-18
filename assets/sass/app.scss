@@ -1,13 +1,4 @@
-$discord-brand: #7289da;
-$disc-light: #36393f;
-$disc-medium: #2f3136;
-$disc-dark: #202225;
-$disc-clear-text: #acadaf;
-$disc-medium-gray: #535559;
-$white-color: white;
-
-
-$leftpannel: 25%;
+@import "variables";
 
 @import "mixins";
 @import "stylefullpage";
