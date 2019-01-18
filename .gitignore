@@ -33,6 +33,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 #----------------------
 # dependencies
+node_modules
 /node_modules
 
 # IDEs and editors
