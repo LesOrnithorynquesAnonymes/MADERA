@@ -11,6 +11,7 @@ nav {
   ul {
     li {
       margin: 10px 0;
+      padding-right: 1rem !important;
       @include breakpoint(col-lg) {
         margin: 0;
       }
@@ -52,7 +53,7 @@ nav {
     }
     li.logout {
       @include breakpoint(col-lg) {
-        margin-left: 30px;
+        margin-left: 15px;
 
       }
     }
