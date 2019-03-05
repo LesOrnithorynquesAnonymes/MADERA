@@ -1,9 +1,3 @@
-## See it
-
-This repository includes an example application built using blueprint3d:
-
-### http://furnishup.github.io/blueprint3d/example/
-
 ## What is this?
 
 This is a customizable application built on three.js that allows users to design an interior space such as a home or apartment. Below are screenshots from our Example App (link above). 
@@ -20,32 +14,6 @@ This is a customizable application built on three.js that allows users to design
 
 ![3d_design](https://s3.amazonaws.com/furnishup/design.png)
 
-## Developing and Running Locally
-
-To get started, clone the repository and ensure you npm >= 3 and grunt installed, then run:
-
-    npm install
-    grunt
-
-The latter command generates `example/js/blueprint3d.js` from `src`.
-
-The easiest way to run locally is to run a local server from the `example` directory. There are plenty of options. One uses Python's built in webserver:
-
-    cd example
-
-    # Python 2.x
-    python -m SimpleHTTPServer
-
-    # Python 3.x
-    python -m http.server
-
-Then, visit `http://localhost:8000` in your browser.
-
-## Contribute!
-
-This project requires a lot more work. In general, it was rushed through various prototype stages, and never refactored as much as it probably should be. We need your help!
-
-Please contact us if you are interested in contributing.
 
 ### Todos
 
@@ -80,10 +48,9 @@ The `src` directory contains the core of the project. Here is a description of t
 `three` - 3D view/controller for viewing and modifying item placement
 
 
-### `example/` Directory
+### `plan/` Directory
 
 The example directory contains an application built using the core blueprint3d javascript building blocks. It adds html, css, models, textures, and more javascript to tie everything together.
 
 ## License
-
 This project is open-source! See LICENSE.txt for more information.
