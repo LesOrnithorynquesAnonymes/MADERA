@@ -4,12 +4,21 @@
     </button>
     <div class="collapse navbar-collapse" id="navcol-1">
         <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item" title="Projet"><a class="nav-link" href="home.html"><i class="fa fa-list-alt"></i><span>Projet</span></a></li>
-            <li class="nav-item" title="Client"><a class="nav-link" href="clients.html"><i class="fa fa-users"></i><span>Client</span></a></li>
-            <li class="nav-item" title="Devis"><a class="nav-link" href="devis.html"><i class="fa fa-file-text"></i><span>Devis</span></a></li>
-            <li class="nav-item"
-                title="Devis"><a class="nav-link" href="../plugin/plan/index.html"><i class="fa fa-file-text"></i><span>PLAN</span></a></li>
-            <li class="nav-item logout" title="Se déconnecter"><a class="nav-link" href="#"><i class="fa fa-sign-out"></i><span>Déconnexion</span></a></li>
+            <li class="nav-item" title="Projet">
+                <a class="nav-link" href="home.html"><i class="fa fa-list-alt"></i><span>Projet</span></a>
+            </li>
+            <li class="nav-item" title="Client">
+                <a class="nav-link" href="clients.html"><i class="fa fa-users"></i><span>Client</span></a>
+            </li>
+            <li class="nav-item" title="Devis">
+                <a class="nav-link" href="devis.html"><i class="fa fa-file-text"></i><span>Devis</span></a>
+            </li>
+            <li class="nav-item" title="Plan">
+                <a class="nav-link" href="../plugin/plan/index.html"><i class="fa fa-file-text"></i><span>WILL DISAPEAR !</span></a>
+            </li>
+            <li class="nav-item logout" title="Se déconnecter">
+                <a class="nav-link" href="#"><i class="fa fa-sign-out"></i><span>Déconnexion</span></a>
+            </li>
         </ul>
     </div>
 </div>
@@ -27,13 +36,11 @@
 
         // MENU HEIGHT
         let nav = $('.navbar');
-        $('.navbar-toggler').on('click', function (e) {
-            console.log(e);
+        $('.navbar-toggler').on('click', function () {
             if (nav.hasClass('height-resp')) {
                 nav.removeClass('height-resp');
             } else {
                 setTimeout(function () {
-
                     nav.addClass('height-resp');
                 }, 200);
             }

@@ -19,5 +19,5 @@ https://electronjs.org/docs/tutorial/online-offline-events
 
 ### 3D
 https://github.com/furnishup/blueprint3d
-http://furnishup.github.io/blueprint3d/plan/#
+http://furnishup.github.io/blueprint3d/example/#
 --- 
