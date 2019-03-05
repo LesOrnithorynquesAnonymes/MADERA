@@ -4,8 +4,8 @@
 `npm i -g gulp` si gulp n'est pas déjà installé en global<br>
 `npm i` à la racine du projet
 
-`cd blueprint3d/` puis `npm i`<br>
-`cd example/` puis `grunt` (permet de compiler en dist)
+`cd plugin/` puis `npm i`<br>
+`cd plugin/` puis `grunt` (permet de compiler en dist)
 
 `gulp` à la racine du projet pour compiler tout le SASS
 
