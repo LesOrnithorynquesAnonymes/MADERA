@@ -5,7 +5,7 @@
 `npm i` à la racine du projet
 
 `cd plugin/` puis `npm i`<br>
-`cd plan/` puis `grunt` (permet de compiler en dist)
+`cd plugin/` puis `grunt` (permet de compiler en dist)
 
 `gulp` à la racine du projet pour compiler tout le SASS
 
