@@ -1,4 +1,4 @@
-module.exports = require('mysql').createConnection({
+module.exports = require('mysql-model').createConnection({
     host : 'localhost',
     user : 'root',
     password :'',
