@@ -1,7 +1,7 @@
 var mysql = require('mysql');
-
-var connection = mysql.createConnnection({
-  host : 'localhost:8080',
+console.log("Trying to connect..");
+var connection = mysql.createConnection({
+  host : 'localhost',
   user : 'root',
   password :'',
   database :'madera'
@@ -13,6 +13,6 @@ connection.connect(function(err) {
   console.log("Connected!");
 });
 
-//connection.query("SELECT * FROM projet");
+connection.query("SELECT * FROM projet");
 
 //connection.end();
