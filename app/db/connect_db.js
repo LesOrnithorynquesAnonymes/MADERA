@@ -5,9 +5,13 @@ var connection = mysql.createConnnection({
   user : 'root',
   password :'',
   database :'madera'
-})
+});
 
-connection.connect();
+
+connection.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 
 //connection.query("SELECT * FROM projet");
 
