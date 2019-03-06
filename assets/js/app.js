@@ -1,3 +1,6 @@
+let Router = require('electron-router');
+let router = Router('WINDOW');
+
 $(function () {
     // ########## DEFAULT GENERAL ##########
     const swalMadera = Swal.mixin({
@@ -58,6 +61,7 @@ $(function () {
             if (isConfirm.value === true) {
                 let titre = $('#title-proj').val();
                 let description = $('#desc-proj').val();
+                router.route('POST','/projet/newProjet',titre);
                 console.log(titre + ' ' + description + ' //// Valider Formulaire + save en database ici')
             }
         })
