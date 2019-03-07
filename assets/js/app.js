@@ -134,6 +134,14 @@ $(function () {
         })
     });
 
+
+    // ##########  Click PLAN OPEN FloorPlanEditor ######### //
+    $('#edit-plan').on('click', function(){
+        var plan_active = $("li.plan :has(.active)");
+
+          console.log(plan_active);
+
+    });
     // ##########  DEVIS PAGE ##########
 
 });
