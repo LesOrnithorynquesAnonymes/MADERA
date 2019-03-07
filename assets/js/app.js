@@ -67,13 +67,15 @@ $(function () {
             html: "<form>" +
             "<div><label for='title-proj'>Titre :</label><input type='text' id='title-proj' placeholder='Titre...'></div>" +
             "<div><label for='desc-proj'>Description :</label><textarea type='text' id='desc-proj' placeholder='Description...'></textarea></div>" +
+            "<div><label for='client-proj'>Nom client :</label><textarea type='text' id='client-proj' placeholder='Nom du client...'></textarea></div>" +
             "</form>",
         }).then(function (isConfirm) {
             if (isConfirm.value === true) {
                 let titre = $('#title-proj').val();
                 let description = $('#desc-proj').val();
+                let client = $('#client-proj').val();
                 router.route('POST','/projet/addProjet',$('.add-new-project').data(), function() {});
-                console.log(titre + ' ' + description + ' //// Valider Formulaire + save en database ici');
+                console.log(titre + ' ' + description +' ' + client + ' //// Valider Formulaire + save en database ici');
             }
         })
     });
