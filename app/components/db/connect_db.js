@@ -1,6 +1,6 @@
 module.exports = require('mysql-model').createConnection({
     host : 'localhost',
-    user : 'root',
+    user : 'global',
     password :'',
     database :'madera'
   });

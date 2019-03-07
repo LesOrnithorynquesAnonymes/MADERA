@@ -30,14 +30,12 @@ function createWindow() {
         slashed: true
     }));
 
-    
-
     // Cet evenement est déclenché lorsque la fenetre est fermée
     win.on('closed', function () {
         // réinitialisation de l'objet "window"
         win = null
     });
-
+    
     router.on('ready', () => {
       console.log('imreadydude');
     });

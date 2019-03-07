@@ -1,6 +1,6 @@
 let Router = require('electron-router')
 let router = Router('WINDOW')
-router.send('ready')
+
 
 $(function () {
     // ########## DEFAULT GENERAL ##########
@@ -15,6 +15,16 @@ $(function () {
         cancelButtonColor: '#535559'
     });
 
+    router.send('ready');
+
+    $('#project_1').on('click', function() {
+
+      console.log('yes');
+      router.route('POST', '/project', function(err, res) {
+          console.log(res);
+      });
+
+    })
     // MENU
     $('.navbar-toggler').on('click', function (e) {
         const nav = $(this).closest('nav');
@@ -62,7 +72,7 @@ $(function () {
             if (isConfirm.value === true) {
                 let titre = $('#title-proj').val();
                 let description = $('#desc-proj').val();
-                router.route('POST','/projet/addProjet',$('.add-new-project').data(),);
+                router.route('POST','/projet/addProjet',$('.add-new-project').data(), function() {});
                 console.log(titre + ' ' + description + ' //// Valider Formulaire + save en database ici');
             }
         })

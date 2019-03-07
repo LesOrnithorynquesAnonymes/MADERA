@@ -22,33 +22,6 @@
         </ul>
     </div>
 </div>
+<div id="content">
 
-<script type="text/javascript" src="../app/routes.js">
-
-</script>
-<script>
-    $(function () {
-
-        // ################## MENU ##################
-        // trick pour poser le active du menu sur la bonne page
-        let origin = window.location.origin;
-        let url = window.location.pathname;
-        let urlSplitted = url.split('/')[3];
-        $('nav li a[href="' + urlSplitted + '"]').addClass('active');
-
-
-        // MENU HEIGHT
-        let nav = $('.navbar');
-        $('.navbar-toggler').on('click', function () {
-            if (nav.hasClass('height-resp')) {
-                nav.removeClass('height-resp');
-            } else {
-                setTimeout(function () {
-                    nav.addClass('height-resp');
-                }, 200);
-            }
-        });
-
-    });
-
-</script>
+</div>
