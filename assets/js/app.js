@@ -103,7 +103,8 @@ $(function () {
             if (isConfirm.value === true) {
                 let titre = $('#title-plan').val();
                 let description = $('#desc-plan').val();
-                router.route('POST','/project/add',{titre: titre, description: description}, function() {});
+                var project_id = $('li[id^=project_] .active').attr('id').replace('project_','');
+                router.route('POST','/plan/add',{titre: titre, description: description, project_id: project_id}, function() {});
 
             }
         })
