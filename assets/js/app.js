@@ -20,7 +20,7 @@ $(function () {
     $('#project_1').on('click', function() {
 
       console.log('yes');
-      router.route('POST', '/project', function(err, res) {
+      router.route('POST', '/projects', function(err, res) {
           console.log(res);
       });
 
@@ -60,6 +60,18 @@ $(function () {
         }
     });
 
+    router.route('GET', '/projects', function(err, res) {
+      $('#projects').html('');
+      console.log(res, err);
+
+      if(!err){
+        for(var key in res) {
+          project = res.key;
+          $('#projects').append('<li id="project_' + project.id + '" class="project">' + project.name + '</li>');
+        }
+      }
+
+    });
 
     $('.add-new-project').on('click', function (e) {
         swalMadera({

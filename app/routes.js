@@ -19,9 +19,7 @@ router.post('/project', (req, res) => {
 
   projet = new Projet();
 
-  projet.set('id', 4);
-  projet.read();
-  console.log(projet.id);
+  res.json(projet.find('all'));
 });
 
 
