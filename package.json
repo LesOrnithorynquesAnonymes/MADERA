@@ -20,6 +20,7 @@
     "bootstrap-sass": "^3.4.0",
     "electron": "^4.0.1",
     "electron-router": "^0.4.2",
+    "file-saver": "^2.0.1",
     "gulp": "^3.9.1",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",

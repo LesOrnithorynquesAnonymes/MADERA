@@ -95,7 +95,7 @@ $(function () {
     //TODO
     });
 
-    $('.add-new-project').on('click', function (e) {
+    $('.add-new-project').on('click', function () {
         swalMadera({
             title: '<div class="title">Ajouter un nouveau projet</div>',
             html: "<form>" +
@@ -113,6 +113,25 @@ $(function () {
             }
         })
     });
+
+    $('.new-plan').on('click', function () {
+        swalMadera({
+            title: '<div class="title">Ajouter un nouveau plan</div>',
+            html: "<form>" +
+            "<div><label for='title-plan'>Nom du plan :</label><input type='text' id='title-plan' placeholder='Titre...'></div>" +
+            "<div><label for='desc-plan'>Description du plan :</label><textarea type='text' id='desc-plan' placeholder='Description...'></textarea></div>" +
+            "</form>",
+        }).then(function (isConfirm) {
+            if (isConfirm.value === true) {
+                let titre = $('#title-plan').val();
+                let description = $('#desc-plan').val();
+                var project_id = $('li[id^=project_] .active').attr('id').replace('project_','');
+                router.route('POST','/plan/add',{titre: titre, description: description, project_id: project_id}, function() {});
+
+            }
+        })
+    });
+
 
     // ##########  CLIENT PAGE ##########
     $('.add-new-client').on('click', function (e) {
@@ -138,6 +157,14 @@ $(function () {
         })
     });
 
+
+    // ##########  Click PLAN OPEN FloorPlanEditor ######### //
+    $('#edit-plan').on('click', function(){
+        var plan_active = $("li.plan :has(.active)");
+
+          console.log(plan_active);
+
+    });
     // ##########  DEVIS PAGE ##########
 
 });

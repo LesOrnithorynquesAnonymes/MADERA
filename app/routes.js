@@ -47,3 +47,16 @@ router.post('/client/add', (req, res) => {
   });
   client.save();
 });
+
+
+router.post('/plan/add', (req, res) => {
+  Plan = require('../app/components/plan/plan_db.js');
+  console.log(req.params[0].titre);
+  plan = new Plan({
+    name : req.params[0].titre,
+    description : req.params[0].description,
+    projet_id : project_id
+  });
+
+  plan.save();
+})
