@@ -2,7 +2,9 @@ var db = require('../db/connect_db.js');
 const Router = require('electron-router');
 let router = Router('DB');
 
-router.post('/projet/addProjet', (req, res)=> {
+router.on('ready', () => { console.log('on est dans le projet enfait'); })
+
+router.post('/DB', (req, res) => {
   console.log('Received', req.params);
    res.json( err, result );
 })

@@ -62,7 +62,7 @@ $(function () {
             if (isConfirm.value === true) {
                 let titre = $('#title-proj').val();
                 let description = $('#desc-proj').val();
-                router.route('POST','/projet/addProjet',$('.add-new-project').data());
+                router.route('POST','/projet/addProjet',$('.add-new-project').data(),);
                 console.log(titre + ' ' + description + ' //// Valider Formulaire + save en database ici');
             }
         })
