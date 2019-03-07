@@ -72,8 +72,9 @@ $(function () {
             if (isConfirm.value === true) {
                 let titre = $('#title-proj').val();
                 let description = $('#desc-proj').val();
-                router.route('POST','/projet/addProjet',$('.add-new-project').data(), function() {});
-                console.log(titre + ' ' + description + ' //// Valider Formulaire + save en database ici');
+                //console.log($('.add-new-project').data());
+                router.route('POST','/project/add',{titre: titre, description: description}, function() {});
+
             }
         })
     });
@@ -95,8 +96,9 @@ $(function () {
                 let prenom = $('#prenom-cli').val();
                 let mail = $('#mail-cli').val();
                 let phone = $('#tel-cli').val();
-                let city = $('#cville-cli').val();
-                console.log(nom + ' ' + prenom + ' //// Valider Formulaire + save en database ici')
+                let city = $('#ville-cli').val();
+                //console.log(nom + ' ' + prenom + ' //// Valider Formulaire + save en database ici');
+                router.route('POST','/client/add',{nom: nom, prenom: prenom, mail: mail, phone: phone, city: city}, function() {});
             }
         })
     });
