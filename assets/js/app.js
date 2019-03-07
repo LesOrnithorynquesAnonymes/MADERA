@@ -17,14 +17,6 @@ $(function () {
 
     router.send('ready');
 
-    $('#project_1').on('click', function() {
-
-      console.log('yes');
-      router.route('POST', '/projects', function(err, res) {
-          console.log(res);
-      });
-
-    })
     // MENU
     $('.navbar-toggler').on('click', function (e) {
         const nav = $(this).closest('nav');
@@ -62,15 +54,45 @@ $(function () {
 
     router.route('GET', '/projects', function(err, res) {
       $('#projects').html('');
-      console.log(res, err);
 
       if(!err){
         for(var key in res) {
-          project = res.key;
+          project = res[key];
           $('#projects').append('<li id="project_' + project.id + '" class="project">' + project.name + '</li>');
         }
       }
+      else {
+        $('#projects').htlm('Une erreur est survenu');
+      }
+    });
 
+    $(document).on('click', 'li[id^=project_]:not(.active)', function() {
+      var $this = $(this);
+
+        var id = $this.attr('id').replace('project_', '');
+        router.route('GET', 'project/:id/plans', {project_id: id} function(err, res) {
+
+          if(!err) {
+
+            $('#projects li').removeClass('active');
+            $('#plans').html();
+
+            $this.hadClass('active');
+            for(var key in res) {
+              plan = res[key];
+              $('#plans').append('<li id="plan_" class="plan" data-date="01/24/2018">' +
+                '<i class="fa fa-home"></i>' +
+                '<p class="label">Plan 1</p></li>'
+              );
+
+            }
+          }
+
+        });
+    });
+
+    $('.new-plan').on('click', function() {
+    //TODO
     });
 
     $('.add-new-project').on('click', function (e) {
