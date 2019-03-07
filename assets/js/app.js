@@ -73,15 +73,9 @@ $(function () {
             if (isConfirm.value === true) {
                 let titre = $('#title-proj').val();
                 let description = $('#desc-proj').val();
-<<<<<<< HEAD
                 //console.log($('.add-new-project').data());
                 router.route('POST','/project/add',{titre: titre, description: description}, function() {});
 
-=======
-                let client = $('#client-proj').val();
-                router.route('POST','/projet/addProjet',$('.add-new-project').data(), function() {});
-                console.log(titre + ' ' + description +' ' + client + ' //// Valider Formulaire + save en database ici');
->>>>>>> 4bfe63fc4b67f793e7c030a8f55972004ef10136
             }
         })
     });
@@ -110,6 +104,14 @@ $(function () {
         })
     });
 
+
+    // ##########  Click PLAN OPEN FloorPlanEditor ######### //
+    $('#edit-plan').on('click', function(){
+        var plan_active = $("li.plan :has(.active)");
+
+          console.log(plan_active);
+
+    });
     // ##########  DEVIS PAGE ##########
 
 });
