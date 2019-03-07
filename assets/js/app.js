@@ -20,7 +20,7 @@ $(function () {
     $('#project_1').on('click', function() {
 
       console.log('yes');
-      router.route('POST', '/project', function(err, res) {
+      router.route('POST', '/projects', function(err, res) {
           console.log(res);
       });
 
@@ -79,13 +79,15 @@ $(function () {
             html: "<form>" +
             "<div><label for='title-proj'>Titre :</label><input type='text' id='title-proj' placeholder='Titre...'></div>" +
             "<div><label for='desc-proj'>Description :</label><textarea type='text' id='desc-proj' placeholder='Description...'></textarea></div>" +
+            "<div><label for='client-proj'>Nom client :</label><textarea type='text' id='client-proj' placeholder='Nom du client...'></textarea></div>" +
             "</form>",
         }).then(function (isConfirm) {
             if (isConfirm.value === true) {
                 let titre = $('#title-proj').val();
                 let description = $('#desc-proj').val();
-                router.route('POST','/projet/addProjet',$('.add-new-project').data(), function() {});
-                console.log(titre + ' ' + description + ' //// Valider Formulaire + save en database ici');
+                //console.log($('.add-new-project').data());
+                router.route('POST','/project/add',{titre: titre, description: description}, function() {});
+
             }
         })
     });
@@ -107,8 +109,9 @@ $(function () {
                 let prenom = $('#prenom-cli').val();
                 let mail = $('#mail-cli').val();
                 let phone = $('#tel-cli').val();
-                let city = $('#cville-cli').val();
-                console.log(nom + ' ' + prenom + ' //// Valider Formulaire + save en database ici')
+                let city = $('#ville-cli').val();
+                //console.log(nom + ' ' + prenom + ' //// Valider Formulaire + save en database ici');
+                router.route('POST','/client/add',{nom: nom, prenom: prenom, mail: mail, phone: phone, city: city}, function() {});
             }
         })
     });
