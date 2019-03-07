@@ -3,6 +3,9 @@ const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
 
+const Router = require('electron-router');
+let router = Router('MAIN');
+
 let win;
 
 function createWindow() {
@@ -27,11 +30,17 @@ function createWindow() {
         slashed: true
     }));
 
+    
+
     // Cet evenement est déclenché lorsque la fenetre est fermée
     win.on('closed', function () {
         // réinitialisation de l'objet "window"
         win = null
-    })
+    });
+
+    router.on('ready', () => {
+      console.log('imreadydude');
+    });
 }
 
 app.on('ready', createWindow);

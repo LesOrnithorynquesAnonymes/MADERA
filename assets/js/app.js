@@ -49,6 +49,7 @@ $(function () {
         }
     });
 
+    router.send('ready');
 
     $('.add-new-project').on('click', function (e) {
         swalMadera({
@@ -61,8 +62,10 @@ $(function () {
             if (isConfirm.value === true) {
                 let titre = $('#title-proj').val();
                 let description = $('#desc-proj').val();
-                router.route('POST','/projet/newProjet',titre);
-                console.log(titre + ' ' + description + ' //// Valider Formulaire + save en database ici')
+                router.route('POST','/DB', $('.add-new-project').data(), function(err, res) {
+
+                  console.log(titre + ' ' + description + ' //// Valider Formulaire + save en database ici')
+                });
             }
         })
     });
