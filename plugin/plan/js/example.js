@@ -511,12 +511,25 @@ var mainControls = function(blueprint3d) {
       $("#camera-controls").show();
     });
   }
+  function genereView2D(){
+    console.log("generation des views 2D");
+    $("#floorplanner-controls").hide();
+    html2canvas(document.querySelector('#floorplanner-canvas')).then(canvas => {
+      image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      var link = document.createElement('a');
+      link.download = "view-projet.png";
+      link.href = image;
+      link.click();
+      $("#floorplanner-controls").show();
+    });
+  }
 
   function init() {
     $("#new").click(newDesign);
     $("#loadFile").change(loadDesign);
     $("#saveFile").click(saveDesign);
     $("#generateView").click(genereView);
+    $("#generateView2D").click(genereView2D);
   }
 
   init();
