@@ -496,11 +496,27 @@ var mainControls = function(blueprint3d) {
     document.body.removeChild(a)
 
   }
+  function genereView() {
+
+    console.log("generation des views");
+    $("#main-controls").hide();
+    $("#camera-controls").hide();
+    html2canvas(document.querySelector('#viewer')).then(canvas => {
+      image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      var link = document.createElement('a');
+      link.download = "view-projet.png";
+      link.href = image;
+      link.click();
+      $("#main-controls").show();
+      $("#camera-controls").show();
+    });
+  }
 
   function init() {
     $("#new").click(newDesign);
     $("#loadFile").change(loadDesign);
     $("#saveFile").click(saveDesign);
+    $("#generateView").click(genereView);
   }
 
   init();
