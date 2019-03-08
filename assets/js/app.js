@@ -70,7 +70,7 @@ $(function () {
       var $this = $(this);
 
         var id = $this.attr('id').replace('project_', '');
-        router.route('GET', 'project/:id/plans', {project_id: id} function(err, res) {
+        router.route('GET', 'project/:id/plans', {project_id: id}, function(err, res) {
 
           if(!err) {
 
