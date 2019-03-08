@@ -1,7 +1,8 @@
+const Router = require('electron-router');
+let router = Router('ROUTES');
 
 // ** AJOUT D'UN NOUVEAU PROKET **//
 router.post('/project/add', (req, res) => {
-
   Projet = require('../app/components/project/projet_db.js');
 
   projet = new Projet({
@@ -13,18 +14,27 @@ router.post('/project/add', (req, res) => {
   projet.save();
 });
 
-router.post('/project', (req, res) => {
-  //console.log(__dirname, req.params);
+router.get('/projects', (req, res) => {
   Projet = require('../app/components/project/projet_db.js');
 
   projet = new Projet();
 
-  res.json(projet.find('all'));
+  projet.find('all', function(err, rows, fields) {
+    res.json(rows);
+  });
 });
 
+router.get('project/:id/plans', (req, res) => {
+  Plan = require('../app/components/plan/plan_db.js');
+
+  plan = new Plan();
+
+  plan.find('all', {where: 'project_id = ' + req.params[0].project_id}, (req,res) => {
+    res.json(rows);
+  });
+});
 
 router.post('/client/add', (req, res) => {
-  //console.log(__dirname, req.params);
   Client = require('../app/components/client/client_db.js');
   console.log(req.params[0].city);
   client = new Client({
