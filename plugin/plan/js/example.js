@@ -465,7 +465,9 @@ var ViewerFloorplanner = function (blueprint3d) {
 };
 
 var mainControls = function (blueprint3d) {
-    var blueprint3d = blueprint3d;
+    // var blueprint3d = blueprint3d;
+
+    console.log(blueprint3d);
 
     function newDesign() {
         blueprint3d.model.loadSerialized('{"floorplan":{"corners":{"f90da5e3-9e0e-eba7-173d-eb0b071e838e":{"x":204.85099999999989,"y":289.052},"da026c08-d76a-a944-8e7b-096b752da9ed":{"x":672.2109999999999,"y":289.052},"4e3d65cb-54c0-0681-28bf-bddcc7bdb571":{"x":672.2109999999999,"y":-178.308},"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"x":204.85099999999989,"y":-178.308}},"walls":[{"corner1":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","corner2":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","corner2":"da026c08-d76a-a944-8e7b-096b752da9ed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"da026c08-d76a-a944-8e7b-096b752da9ed","corner2":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","corner2":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"wallTextures":[],"floorTextures":{},"newFloorTextures":{}},"items":[]}');
@@ -479,74 +481,75 @@ var mainControls = function (blueprint3d) {
             console.log(event);
             var data = event.target.result;
             blueprint3d.model.loadSerialized(data);
-        }
+        };
         reader.readAsText(files[0]);
     }
 
     function saveDesign() {
 
+
         let fs = require('fs');
         let path = require('path');
         var FileSaver = require('file-saver');
+        //FileSaver.saveAs(blob,"myfuckin.design3D");
 
         var data = blueprint3d.model.exportSerialized();
-        var a = window.document.createElement('a');
         var blob = new Blob([data], {type: 'text'});
-        var blueprint = URL.createObjectURL(blob);
-        //FileSaver.saveAs(blob,"myfuckin.design3D");
-        console.log(blob);
-        console.log(blueprint);
+        var blueprint = window.URL.createObjectURL(blob);
+        var random = Math.floor((Math.random() * 1000) + 1);
 
-        fs.writeFile(path.join(__dirname, '../../assets/files/design.blueprint3d'), blueprint, 'binary', function (err) {
+        fs.writeFile(path.join(__dirname, '../../assets/files/blueprints/' + random + '.design.blueprint3'), data, function (err) {
             if (err) {
                 return console.log(err);
             }
-            console.log("The file was saved!");
+            console.log("Le blueprint a été sauvegardé !");
         });
 
-
-        a.href = window.URL.createObjectURL(blob);
-        a.download = 'design.blueprint3d';
-        document.body.appendChild(a);
-        a.click();
+        // var a = window.document.createElement('a');
+        // a.href = window.URL.createObjectURL(blob);
+        // a.download = 'design.blueprint3d';
+        // document.body.appendChild(a);
+        // a.click();
         // document.body.removeChild(a);
 
-  }
-  function genereView() {
+    }
 
-    console.log("generation des views");
-    $("#main-controls").hide();
-    $("#camera-controls").hide();
-    html2canvas(document.querySelector('#viewer')).then(canvas => {
-      image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-      var link = document.createElement('a');
-      link.download = "view-projet.png";
-      link.href = image;
-      link.click();
-      $("#main-controls").show();
-      $("#camera-controls").show();
-    });
-  }
-  function genereView2D(){
-    console.log("generation des views 2D");
-    $("#floorplanner-controls").hide();
-    html2canvas(document.querySelector('#floorplanner-canvas')).then(canvas => {
-      image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-      var link = document.createElement('a');
-      link.download = "view-projet.png";
-      link.href = image;
-      link.click();
-      $("#floorplanner-controls").show();
-    });
-  }
+    function genereView() {
 
-  function init() {
-    $("#new").click(newDesign);
-    $("#loadFile").change(loadDesign);
-    $("#saveFile").click(saveDesign);
-    $("#generateView").click(genereView);
-    $("#generateView2D").click(genereView2D);
-  }
+        console.log("generation des views");
+        $("#main-controls").hide();
+        $("#camera-controls").hide();
+        html2canvas(document.querySelector('#viewer')).then(canvas => {
+            image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            var link = document.createElement('a');
+            link.download = "view-projet.png";
+            link.href = image;
+            link.click();
+            $("#main-controls").show();
+            $("#camera-controls").show();
+        });
+    }
+
+    function genereView2D() {
+        console.log("generation des views 2D");
+        $("#floorplanner-controls").hide();
+        html2canvas(document.querySelector('#floorplanner-canvas')).then(canvas => {
+            image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            var link = document.createElement('a');
+            link.download = "view-projet.png";
+            link.href = image;
+            link.click();
+            $("#floorplanner-controls").show();
+        });
+    }
+
+    function init() {
+        $("#new").click(newDesign);
+        $("#loadFile").change(loadDesign);
+        $("#saveFile").click(saveDesign);
+        $("#generateView").click(genereView);
+        $("#generateView2D").click(genereView2D);
+    }
 
     init();
 }
