@@ -486,6 +486,7 @@ var mainControls = function(blueprint3d) {
 
     var FileSaver = require('file-saver');
     var data = blueprint3d.model.exportSerialized();
+    //Completer data (JSON) avec les informations custo
     var a = window.document.createElement('a');
     var blob = new Blob([data], {type : 'text'});
     //FileSaver.saveAs(blob,"myfuckin.design3D");

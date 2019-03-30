@@ -166,5 +166,19 @@ $(function () {
 
     });
     // ##########  DEVIS PAGE ##########
+    $('#gen-devis').on('click',function(){
+        //Dependecies JSPDF
+        jsPDF = require('jspdf')
+
+        //Doc Declaration
+        var doc = new jsPDF();
+
+        //Get all Plan in projet
+        $( "li.plan" ).each(function( index ) {
+          console.log($(this).attr('class'));
+        });
+        doc.text('hello world', 10, 10);
+        doc.save('devis.pdf');
+    });
 
 });
