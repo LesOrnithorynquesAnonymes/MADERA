@@ -37,18 +37,6 @@ router.get('project/:id/plans', (req, res) =>{
 });
 
 
-router.get('/plans', (req, res) =>{
-  Plan = require('../app/components/plan/plan_db.js');
-  plan = new Plan();
-  console.log(req.params[0].plan_id);
-  /*
-  plan.find('all', {where: 'id = ' + req.params[0].project_id}, function(err,rows,fields){
-    res.json(rows);
-    console.log(res.json(rows));
-  });
-  */
-
-});
 
 router.post('/client/add', (req, res) => {
   Client = require('../app/components/client/client_db.js');
@@ -67,11 +55,11 @@ router.post('/client/add', (req, res) => {
 
 router.post('/plan/add', (req, res) => {
   Plan = require('../app/components/plan/plan_db.js');
-  console.log(req.params[0].titre);
+
   plan = new Plan({
     name : req.params[0].titre,
     description : req.params[0].description,
-    projet_id : req.params[0].project_id
+    projet_id : req.params[0].projet_id
   });
 
   plan.save();

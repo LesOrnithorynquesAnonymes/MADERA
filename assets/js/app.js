@@ -131,8 +131,9 @@ $(function () {
             if (isConfirm.value === true) {
                 let titre = $('#title-plan').val();
                 let description = $('#desc-plan').val();
-                //var project_id = $('li[id^=project_] .active').attr('id').replace('project_',"");
-                router.route('POST','/plan/add',{titre: titre, description: description, project_id: 5}, function() {});
+                var project_id = $('li[id^=project_].active').attr('id').replace('project_','');
+                //console.log(project_id);
+                router.route('POST','/plan/add',{titre: titre, description: description, projet_id: project_id}, function() {});
 
             }
         })
@@ -181,7 +182,8 @@ $(function () {
 
         //Get all Plan in projet
         $("li.plan").each(function() {
-          router.route('GET', 'project/:id/plans', {projet_id: 5}, function(err, res) {
+          var project_id = $('li[id^=project_].active').attr('id').replace('project_','');
+          router.route('GET', 'project/:id/plans', {projet_id: project_id}, function(err, res) {
             console.log(res);
             //console.log(err);
             //console.log(res);
