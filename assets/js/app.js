@@ -29,6 +29,10 @@ $(function () {
 
     });
 
+    $('#test')on('click', function () {
+      $('main').load('../plugin/plan/index.html');
+    });
+
     // FERMER LE FOOTER PANNEL
     $('.close-data').on('click', function (e) {
         $('.footer').hide();
@@ -114,7 +118,9 @@ $(function () {
                 let titre = $('#title-proj').val();
                 let description = $('#desc-proj').val();
                 //console.log($('.add-new-project').data());
-                router.route('POST','/project/add',{titre: titre, description: description}, function() {});
+                router.route('POST','/project/add',{titre: titre, description: description}, function(err, res) {
+                  //TODO add before nwe project button
+                });
 
             }
         })
@@ -131,9 +137,16 @@ $(function () {
             if (isConfirm.value === true) {
                 let titre = $('#title-plan').val();
                 let description = $('#desc-plan').val();
+<<<<<<< HEAD
                 var project_id = $('li[id^=project_].active').attr('id').replace('project_','');
                 //console.log(project_id);
                 router.route('POST','/plan/add',{titre: titre, description: description, projet_id: project_id}, function() {});
+=======
+
+                var project_id = $('li[id^=project_] .active').attr('id').replace('project_',"");
+
+                router.route('POST','/plan/add',{titre: titre, description: description, project_id: 5}, function() {});
+>>>>>>> c7fc1b8607e0aeb2bbbbd5bff4bdca11cd7c852a
 
             }
         })
