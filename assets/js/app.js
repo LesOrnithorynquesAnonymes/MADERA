@@ -29,6 +29,10 @@ $(function () {
 
     });
 
+    $('#test')on('click', function () {
+      $('main').load('../plugin/plan/index.html');
+    });
+
     // FERMER LE FOOTER PANNEL
     $('.close-data').on('click', function (e) {
         $('.footer').hide();
@@ -114,7 +118,9 @@ $(function () {
                 let titre = $('#title-proj').val();
                 let description = $('#desc-proj').val();
                 //console.log($('.add-new-project').data());
-                router.route('POST','/project/add',{titre: titre, description: description}, function() {});
+                router.route('POST','/project/add',{titre: titre, description: description}, function(err, res) {
+                  //TODO add before nwe project button
+                });
 
             }
         })
@@ -131,7 +137,9 @@ $(function () {
             if (isConfirm.value === true) {
                 let titre = $('#title-plan').val();
                 let description = $('#desc-plan').val();
-                //var project_id = $('li[id^=project_] .active').attr('id').replace('project_',"");
+
+                var project_id = $('li[id^=project_] .active').attr('id').replace('project_',"");
+
                 router.route('POST','/plan/add',{titre: titre, description: description, project_id: 5}, function() {});
 
             }
