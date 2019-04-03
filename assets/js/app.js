@@ -1,10 +1,10 @@
 let Router = require('electron-router')
 let router = Router('WINDOW')
-<<<<<<< HEAD
+
 //var $ = require('jQuery');
-=======
+
 let moment = require('moment')
->>>>>>> 52bf80624ec33e3b928d2b1b91ba58ac3a2f37c6
+
 
 $(function () {
 
@@ -68,12 +68,7 @@ $(function () {
         }
       }
       else {
-<<<<<<< HEAD
-        $('#projects').html('Une erreur est survenu');
-        //console.log("une erreure est survenue");
-=======
         $('#projects').html('<li class="project">Une erreur est survenue</li>');
->>>>>>> 52bf80624ec33e3b928d2b1b91ba58ac3a2f37c6
       }
     });
 
@@ -93,7 +88,7 @@ $(function () {
               plan = res[key];
               $('#plans').append('<li id="plan_' + plan.id + '" class="plan" data-date="' + moment(plan.created).fromNow() + '">' +
                 '<i class="fa fa-home"></i>' +
-                '<p class="label">Plan 1</p></li>'
+                '<p class="label">' + plan.name + '</p></li>'
               );
             }
 
