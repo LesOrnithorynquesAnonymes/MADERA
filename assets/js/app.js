@@ -1,6 +1,6 @@
 let Router = require('electron-router')
 let router = Router('WINDOW')
-
+//var $ = require('jQuery');
 
 $(function () {
     // ########## DEFAULT GENERAL ##########
@@ -62,7 +62,8 @@ $(function () {
         }
       }
       else {
-        $('#projects').htlm('Une erreur est survenu');
+        $('#projects').html('Une erreur est survenu');
+        //console.log("une erreure est survenue");
       }
     });
 
@@ -70,7 +71,7 @@ $(function () {
       var $this = $(this);
 
         var id = $this.attr('id').replace('project_', '');
-        router.route('GET', 'project/:id/plans', {project_id: id}, function(err, res) {
+        router.route('GET', 'project/:id/plans', {projet_id: id}, function(err, res) {
 
           if(!err) {
 
@@ -125,8 +126,8 @@ $(function () {
             if (isConfirm.value === true) {
                 let titre = $('#title-plan').val();
                 let description = $('#desc-plan').val();
-                var project_id = $('li[id^=project_] .active').attr('id').replace('project_','');
-                router.route('POST','/plan/add',{titre: titre, description: description, project_id: project_id}, function() {});
+                //var project_id = $('li[id^=project_] .active').attr('id').replace('project_',"");
+                router.route('POST','/plan/add',{titre: titre, description: description, project_id: 5}, function() {});
 
             }
         })
@@ -174,11 +175,33 @@ $(function () {
         var doc = new jsPDF();
 
         //Get all Plan in projet
-        $( "li.plan" ).each(function( index ) {
-          console.log($(this).attr('class'));
+        $("li.plan").each(function() {
+          router.route('GET', 'project/:id/plans', {projet_id: 5}, function(err, res) {
+            console.log(res);
+            //console.log(err);
+            //console.log(res);
+            /*
+            if(!err) {
+
+              $('#projects li').removeClass('active');
+              $('#plans').html();
+
+              $this.hadClass('active');
+              for(var key in res) {
+                plan = res[key];
+                $('#plans').append('<li id="plan_" class="plan" data-date="01/24/2018">' +
+                  '<i class="fa fa-home"></i>' +
+                  '<p class="label">Plan 1</p></li>'
+                );
+
+              }
+            }
+            */
+
+          });
         });
         doc.text('hello world', 10, 10);
-        doc.save('devis.pdf');
+        //doc.save('devis.pdf');
     });
 
 });

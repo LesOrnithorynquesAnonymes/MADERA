@@ -24,14 +24,30 @@ router.get('/projects', (req, res) => {
   });
 });
 
-router.get('project/:id/plans', (req, res) => {
+router.get('project/:id/plans', (req, res) =>{
   Plan = require('../app/components/plan/plan_db.js');
-
+  console.log(req.params[0].projet_id);
   plan = new Plan();
 
-  plan.find('all', {where: 'project_id = ' + req.params[0].project_id}, (req,res) => {
+  plan.find('all', {where: 'projet_id = ' + req.params[0].projet_id}, function(err,rows,fields){
     res.json(rows);
+    console.log(rows);
   });
+
+});
+
+
+router.get('/plans', (req, res) =>{
+  Plan = require('../app/components/plan/plan_db.js');
+  plan = new Plan();
+  console.log(req.params[0].plan_id);
+  /*
+  plan.find('all', {where: 'id = ' + req.params[0].project_id}, function(err,rows,fields){
+    res.json(rows);
+    console.log(res.json(rows));
+  });
+  */
+
 });
 
 router.post('/client/add', (req, res) => {
