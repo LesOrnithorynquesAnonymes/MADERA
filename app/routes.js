@@ -24,6 +24,11 @@ router.get('/projects', (req, res) => {
   });
 });
 
+router.get('/3D', (req, res) => {
+    window.location = '../plugin/plan/index.html';
+
+});
+
 router.get('project/:id/plans', (req, res) =>{
   Plan = require('../app/components/plan/plan_db.js');
   console.log(req.params[0].projet_id);

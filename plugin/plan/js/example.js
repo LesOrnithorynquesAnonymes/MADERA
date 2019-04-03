@@ -1,6 +1,7 @@
 /*
  * Camera Buttons
  */
+let moment = require('moment')
 
 var CameraButtons = function (blueprint3d) {
 
@@ -566,7 +567,7 @@ var mainControls = function (blueprint3d) {
         var blueprint = window.URL.createObjectURL(blob);
         var random = Math.floor((Math.random() * 1000) + 1);
 
-        fs.writeFile(path.join(__dirname, '../../assets/files/blueprints/' + random + '.design.blueprint3'), data, function (err) {
+        fs.writeFile(path.join(__dirname, '../../assets/files/blueprints/' + moment().format('X') + ''), data, function (err) {
             if (err) {
                 return console.log(err);
             }
