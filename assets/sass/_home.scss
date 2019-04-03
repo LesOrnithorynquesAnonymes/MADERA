@@ -1,10 +1,18 @@
 main.home {
   .show-project {
+    .generate {
+      display: flex;
+      justify-content: center;
+      margin-top: 2vh;
+      button:nth-child(2) {
+        margin-left: 15px;
+      }
+    }
     ul.list-plan {
       list-style-type: none;
       display: flex;
       flex-wrap: wrap;
-      margin-top: 5vh;
+      margin-top: 2vh;
       li.plan, li.new-plan {
         position: relative;
         width: 180px;

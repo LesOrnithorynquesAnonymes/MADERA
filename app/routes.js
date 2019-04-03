@@ -54,7 +54,7 @@ router.post('/plan/add', (req, res) => {
   plan = new Plan({
     name : req.params[0].titre,
     description : req.params[0].description,
-    projet_id : project_id
+    projet_id : req.params[0].project_id
   });
 
   plan.save();

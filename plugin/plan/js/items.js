@@ -19,7 +19,10 @@ $(document).ready(function() {
       "image" : "models/thumbnails/thumbnail_window.png",
       "model" : "models/js/whitewindow.js",
       "type" : "3"
-    }, 
+    },
+
+
+  /*
     {
       "name" : "Chair",
       "image" : "models/thumbnails/thumbnail_Church-Chair-oak-white_1024x1024.jpg",
@@ -151,7 +154,7 @@ $(document).ready(function() {
       "image" : "models/thumbnails/thumbnail_nyc2.jpg",
       "model" : "models/js/nyc-poster2.js",
       "type" : "2"
-    }
+    }*/
    /*     
    {
       "name" : "",
@@ -160,7 +163,7 @@ $(document).ready(function() {
       "type" : "1"
     }, 
     */
-  ]
+  ];
 
 
 

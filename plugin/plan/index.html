@@ -10,6 +10,7 @@
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
     <script src="js/jquery.js"></script>
+
     <script src="js/three.min.js"></script>
     <script src="js/blueprint3d.js"></script>
 
@@ -100,6 +101,11 @@
                     <div class="panel-body" style="color: #333333">
 
                         <div class="col-sm-6" style="padding: 3px">
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/parquet-flottant.jpg" texture-stretch="false" texture-scale="300">
+                                <img alt="Thumbnail light fine wood" src="rooms/thumbnails/thumbnail_parquet-flottant.jpg"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-6" style="padding: 3px">
                             <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light_fine_wood.jpg" texture-stretch="false" texture-scale="300">
                                 <img alt="Thumbnail light fine wood" src="rooms/thumbnails/thumbnail_light_fine_wood.jpg"/>
                             </a>
@@ -111,21 +117,51 @@
             <!-- Wall Textures -->
             <div id="wallTextures" style="display:none; padding: 0 20px">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Adjust Wall</div>
+                    <div class="panel-heading"> Choix Composants</div>
                     <div class="panel-body" style="color: #333333">
+
+                        <div><b>Gamme Premium<b/><hr></div>
                         <div class="col-sm-6" style="padding: 3px">
-                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/marbletiles.jpg" texture-stretch="false" texture-scale="300">
-                                <img alt="Thumbnail marbletiles" src="rooms/thumbnails/thumbnail_marbletiles.jpg"/>
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/isolant_lainedeverrejpg.jpg" texture-stretch="false" texture-scale="300">
+                                <img alt="Thumbnail Laine de Verre" src="rooms/thumbnails/thumbnail_isolent_lainedeverre.jpg"/>
                             </a>
                         </div>
                         <div class="col-sm-6" style="padding: 3px">
-                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wallmap_yellow.png" texture-stretch="true" texture-scale="">
-                                <img alt="Thumbnail wallmap yellow" src="rooms/thumbnails/thumbnail_wallmap_yellow.png"/>
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/isolent_fibredebois.jpg" texture-stretch="true" texture-scale="">
+                                <img alt="Thumbnail wallmap yellow" src="rooms/thumbnails/thumbnail_isolant_fibredebois.jpg"/>
+                            </a>
+                        </div>
+
+                        <div><b>Gamme Standard<hr><b/></div>
+                        <div class="col-sm-6" style="padding: 3px">
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/ossature_bois.jpg" texture-stretch="false" texture-scale="100">
+                                <img alt="Thumbnail light brick" src="rooms/thumbnails/thumbnail_ossature_bois.jpg"/>
                             </a>
                         </div>
                         <div class="col-sm-6" style="padding: 3px">
-                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light_brick.jpg" texture-stretch="false" texture-scale="100">
-                                <img alt="Thumbnail light brick" src="rooms/thumbnails/thumbnail_light_brick.jpg"/>
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/vieille_brique.jpg" texture-stretch="true" texture-scale="">
+                                <img alt="Thumbnail light brick" src="rooms/thumbnails/thumbnail_vieille_brique.jpg"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-6" style="padding: 3px">
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/vieille_brique.jpg" texture-stretch="true" texture-scale="">
+                                <img alt="Thumbnail light brick" src="rooms/thumbnails/thumbnail_vieille_brique.jpg"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-6" style="padding: 3px">
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/vieille_brique.jpg" texture-stretch="true" texture-scale="">
+                                <img alt="Thumbnail light brick" src=""/>
+                            </a>
+                        </div>
+                        <div><b>Gamme Noob<hr><b/></div>
+                        <div class="col-sm-6" style="padding: 3px">
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/vieille_brique.jpg" texture-stretch="true" texture-scale="">
+                                <img alt="Thumbnail light brick" src="rooms/thumbnails/thumbnail_vieille_brique.jpg"/>
+                            </a>
+                        </div>
+                        <div class="col-sm-6" style="padding: 3px">
+                            <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/vieille_brique.jpg" texture-stretch="true" texture-scale="">
+                                <img alt="Thumbnail light brick" src="rooms/thumbnails/thumbnail_vieille_brique.jpg"/>
                             </a>
                         </div>
                     </div>
@@ -142,6 +178,7 @@
                 <div id="main-controls">
                     <a href="#" class="btn btn-primary" id="new">Nouveau Plan</a>
                     <a href="#" class="btn btn-primary" id="saveFile">Sauvegarder Plan</a>
+                    <a href="#" class="btn btn-primary" id="generateView">Générer la vue</a>
                     <a class="btn btn-primary btn-file"><input type="file" class="hidden-input" id="loadFile">Charger Plan</a>
                 </div>
 
@@ -182,6 +219,10 @@
                         <span class="glyphicon glyphicon-remove"></span>
                         Supprimer des murs
                     </button>
+                    <button id="generateView2D" class="btn btn-disabled">
+                        <span class="glyphicon glyphicon-camera"></span>
+                        Capture du plan 2D
+                    </button>
                     <span class="pull-right">
                 <button class="btn btn-primary" id="update-floorplan">Valider &raquo;</button>
               </span>
@@ -203,4 +244,5 @@
 </div>
 
 </body>
+<script src="js/html2canvas.js"></script>
 </html>
