@@ -28,8 +28,7 @@ router.get('project/:id/plans', (req, res) => {
   Plan = require('../app/components/plan/plan_db.js');
 
   plan = new Plan();
-
-  plan.find('all', {where: 'project_id = ' + req.params[0].project_id}, (req,res) => {
+  plan.find('all', {where: 'project_id = ' + req.params[0].project_id}, (err, rows, fields) => {
     res.json(rows);
   });
 });

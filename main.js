@@ -2,6 +2,7 @@ const {app, BrowserWindow} = require('electron');
 
 const path = require('path');
 const url = require('url');
+const moment = require('moment');
 
 const Router = require('electron-router');
 let router = Router('MAIN');
@@ -22,6 +23,8 @@ function createWindow() {
 
     // DevTool
     win.webContents.openDevTools();
+
+    moment().locale('fr');
 
     //Load the first page of the application
     win.loadURL(url.format({

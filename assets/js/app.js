@@ -1,8 +1,10 @@
 let Router = require('electron-router')
 let router = Router('WINDOW')
-
+let moment = require('moment')
 
 $(function () {
+
+  moment.locale('fr')
     // ########## DEFAULT GENERAL ##########
     const swalMadera = Swal.mixin({
         allowEnterKey: true,
@@ -38,7 +40,7 @@ $(function () {
     });
 
     // ########## HOME PAGE PLAN ##########
-    $('.list-plan .plan').on('click', function (e) {
+    $(document).on('click', '#plans .plan', function (e) {
         let $this = $(this);
         let name = e.currentTarget.innerText;
         let date = $this.data('date');
@@ -62,7 +64,7 @@ $(function () {
         }
       }
       else {
-        $('#projects').htlm('Une erreur est survenu');
+        $('#projects').html('<li class="project">Une erreur est survenue</li>');
       }
     });
 
@@ -70,29 +72,30 @@ $(function () {
       var $this = $(this);
 
         var id = $this.attr('id').replace('project_', '');
-        router.route('GET', 'project/:id/plans', {project_id: id} function(err, res) {
+        console.log(id);
+        router.route('GET', 'project/:id/plans', {project_id: id}, function(err, res) {
 
           if(!err) {
 
             $('#projects li').removeClass('active');
-            $('#plans').html();
+            $('#plans').html('');
 
-            $this.hadClass('active');
+            $this.addClass('active');
             for(var key in res) {
               plan = res[key];
-              $('#plans').append('<li id="plan_" class="plan" data-date="01/24/2018">' +
+              $('#plans').append('<li id="plan_' + plan.id + '" class="plan" data-date="' + moment(plan.created).fromNow() + '">' +
                 '<i class="fa fa-home"></i>' +
                 '<p class="label">Plan 1</p></li>'
               );
-
             }
+
+            $('#plans').append('<li class="new-plan" data-date="05/16/2018">' +
+              '<i class="fa fa-plus"></i>' +
+              '<p class="label">Nouveau...</p></li>'
+            );
           }
 
         });
-    });
-
-    $('.new-plan').on('click', function() {
-    //TODO
     });
 
     $('.add-new-project').on('click', function () {
@@ -114,7 +117,7 @@ $(function () {
         })
     });
 
-    $('.new-plan').on('click', function () {
+    $(document).on('click', '.new-plan', function () {
         swalMadera({
             title: '<div class="title">Ajouter un nouveau plan</div>',
             html: "<form>" +
