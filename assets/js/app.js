@@ -43,9 +43,8 @@ $(function () {
             myStorage.setItem('name',plan.name);
             myStorage.setItem('description',plan.description);
             myStorage.setItem('3Drep',plan.rep3D);
-
-
           }
+          document.location.href = "../plugin/plan/index.html";
         }
         else {
           console.log("error route geet plan by id");
