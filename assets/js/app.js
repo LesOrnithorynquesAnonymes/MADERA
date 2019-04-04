@@ -30,6 +30,13 @@ $(function () {
     });
 
     $('#edit-plan').on('click', function () {
+
+      //Sauvegarde de l'actuel plan du local myStorage
+      if(myStorage.getItem('3Drep') != 'null')
+      {
+        router.route('POST', 'plan/:id/update',{id:myStorage.getItem('id'),updated3D:myStorage.getItem('3Drep')}, function(err, res) {});
+      }
+
       //Ajout du Plan dans localStorage
       var id_plan = $('li[id^=plan_].active').attr('id').replace('plan_','');
 

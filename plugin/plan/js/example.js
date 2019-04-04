@@ -1,3 +1,5 @@
+let Router = require('electron-router')
+let router = Router('WINDOW')
 /*
  * Camera Buttons
  */
@@ -487,6 +489,16 @@ var mainControls = function (blueprint3d) {
         blueprint3d.model.loadSerialized('{"floorplan":{"corners":{"f90da5e3-9e0e-eba7-173d-eb0b071e838e":{"x":-162.94100000000014,"y":289.052},"da026c08-d76a-a944-8e7b-096b752da9ed":{"x":946.531,"y":289.052},"4e3d65cb-54c0-0681-28bf-bddcc7bdb571":{"x":946.531,"y":-456.69199999999995},"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"x":-162.94100000000014,"y":-456.69199999999995},"a8c75dc0-02e2-b426-8b03-89daf5cf559c":{"x":342.36052905273425,"y":-456.69199999999995},"2b57ec46-a87c-982e-016f-22950494a93e":{"x":342.3605290527343,"y":289.052},"549408b6-518f-0ee6-3a5f-7e9d4ea13fed":{"x":693.8965290527343,"y":-456.69199999999995},"3b4dd3f2-323c-7fa7-7c1e-62d99e9ffb3c":{"x":693.8965290527343,"y":289.052}},"walls":[{"corner1":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","corner2":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","corner2":"2b57ec46-a87c-982e-016f-22950494a93e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"da026c08-d76a-a944-8e7b-096b752da9ed","corner2":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","corner2":"549408b6-518f-0ee6-3a5f-7e9d4ea13fed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"a8c75dc0-02e2-b426-8b03-89daf5cf559c","corner2":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"a8c75dc0-02e2-b426-8b03-89daf5cf559c","corner2":"2b57ec46-a87c-982e-016f-22950494a93e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"2b57ec46-a87c-982e-016f-22950494a93e","corner2":"3b4dd3f2-323c-7fa7-7c1e-62d99e9ffb3c","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"549408b6-518f-0ee6-3a5f-7e9d4ea13fed","corner2":"a8c75dc0-02e2-b426-8b03-89daf5cf559c","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"549408b6-518f-0ee6-3a5f-7e9d4ea13fed","corner2":"3b4dd3f2-323c-7fa7-7c1e-62d99e9ffb3c","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"3b4dd3f2-323c-7fa7-7c1e-62d99e9ffb3c","corner2":"da026c08-d76a-a944-8e7b-096b752da9ed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"wallTextures":[],"floorTextures":{},"newFloorTextures":{}},"items":[]}');
   }
   function saveDesign() {
+      var myStorage = window.localStorage;
+      console.log("saving");
+
+      //Custom saver
+        console.log(myStorage.getItem('id'));
+        console.log(blueprint3d.model.exportSerialized());
+        myStorage.setItem('3Drep',blueprint3d.model.exportSerialized());
+
+      //Init Saver
+      /*
       let fs = require('fs');
       let path = require('path');
       var FileSaver = require('file-saver');
@@ -509,6 +521,7 @@ var mainControls = function (blueprint3d) {
       // document.body.appendChild(a);
       // a.click();
       // document.body.removeChild(a);
+      */
 
   }
   /*
