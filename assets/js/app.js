@@ -7,7 +7,7 @@ let moment = require('moment')
 
 
 $(function () {
-
+  var myStorage = window.localStorage;
   moment.locale('fr')
     // ########## DEFAULT GENERAL ##########
     const swalMadera = Swal.mixin({
@@ -29,8 +29,28 @@ $(function () {
 
     });
 
-    $('#test')on('click', function () {
-      $('main').load('../plugin/plan/index.html');
+    $('#edit-plan').on('click', function () {
+      //Ajout du Plan dans localStorage
+      var id_plan = $('li[id^=plan_].active').attr('id').replace('plan_','');
+
+      router.route('GET', 'plan/:id/',{id:id_plan}, function(err, res) {
+        if(!err){
+          for(var key in res) {
+            plan = res[key];
+
+            //add to local storage plan.rep3D
+            myStorage.setItem('id',plan.id);
+            myStorage.setItem('name',plan.name);
+            myStorage.setItem('description',plan.description);
+            myStorage.setItem('3Drep',plan.rep3D);
+
+
+          }
+        }
+        else {
+          console.log("error route geet plan by id");
+        }
+      });
     });
 
     // FERMER LE FOOTER PANNEL
@@ -137,16 +157,9 @@ $(function () {
             if (isConfirm.value === true) {
                 let titre = $('#title-plan').val();
                 let description = $('#desc-plan').val();
-<<<<<<< HEAD
                 var project_id = $('li[id^=project_].active').attr('id').replace('project_','');
                 //console.log(project_id);
                 router.route('POST','/plan/add',{titre: titre, description: description, projet_id: project_id}, function() {});
-=======
-
-                var project_id = $('li[id^=project_] .active').attr('id').replace('project_',"");
-
-                router.route('POST','/plan/add',{titre: titre, description: description, project_id: 5}, function() {});
->>>>>>> c7fc1b8607e0aeb2bbbbd5bff4bdca11cd7c852a
 
             }
         })
@@ -178,13 +191,6 @@ $(function () {
     });
 
 
-    // ##########  Click PLAN OPEN FloorPlanEditor ######### //
-    $('#edit-plan').on('click', function(){
-        var plan_active = $("li.plan :has(.active)");
-
-          console.log(plan_active);
-
-    });
     // ##########  DEVIS PAGE ##########
     $('#gen-devis').on('click',function(){
         //Dependecies JSPDF

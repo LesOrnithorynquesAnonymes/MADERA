@@ -34,6 +34,7 @@ function createWindow() {
     }));
 
     require('./app/routes.js');
+    //require('./plugin/gruntfile.js');
 
     // Cet evenement est déclenché lorsque la fenetre est fermée
     win.on('closed', function () {
@@ -41,8 +42,8 @@ function createWindow() {
         win = null
     });
 
-    router.on('ready', () => {
-      console.log('imreadydude');
+    router.on('ready', () => {      
+      console.log('Setup router..');
     });
 }
 
