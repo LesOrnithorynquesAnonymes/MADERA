@@ -200,40 +200,51 @@ $(function () {
     // ##########  DEVIS PAGE ##########
     $('#gen-devis').on('click',function(){
         //Dependecies JSPDF
-        jsPDF = require('jspdf')
+
+        jsPDF = require('jspdf');
+        require('jspdf-autotable');
+
 
         //Doc Declaration
-        var doc = new jsPDF();
+
 
         //Get all Plan in projet
-        $("li.plan").each(function() {
-          var project_id = $('li[id^=project_].active').attr('id').replace('project_','');
-          router.route('GET', 'project/:id/plans', {projet_id: project_id}, function(err, res) {
-            console.log(res);
-            //console.log(err);
-            //console.log(res);
-            /*
-            if(!err) {
 
-              $('#projects li').removeClass('active');
-              $('#plans').html();
-
-              $this.hadClass('active');
-              for(var key in res) {
-                plan = res[key];
-                $('#plans').append('<li id="plan_" class="plan" data-date="01/24/2018">' +
-                  '<i class="fa fa-home"></i>' +
-                  '<p class="label">Plan 1</p></li>'
-                );
-
-              }
+        var project_id = $('li[id^=project_].active').attr('id').replace('project_','');
+        router.route('GET', 'project/:id/plans', {projet_id: project_id}, function(err, res){
+          var doc = new jsPDF();
+          if(!err)
+          {
+            console.log("not error");
+            for(var key in res) {
+              plan = res[key];
+              doc.autoTable({
+                theme: 'striped',
+                margin:{left:25},
+                styles:{fontSize: 8},
+                head:[['name','description','created']],
+                body:[
+                  [plan.name,plan.description,plan.created],
+                ]
+              });
             }
-            */
+          }
+          doc.save('devis.pdf');
 
+            /*
+            doc.autoTable({
+              theme: 'grid',
+              margin:{left:25},
+              styles:{fontSize: 8},
+              head:[['','','']],
+              body:[
+                [''],
+              ]
+            });
+            */
           });
-        });
-        doc.text('hello world', 10, 10);
-        //doc.save('devis.pdf');
+
     });
+
 
 });

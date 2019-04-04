@@ -1,7 +1,7 @@
 const Router = require('electron-router');
 let router = Router('ROUTES');
 
-// ** AJOUT D'UN NOUVEAU PROKET **//
+
 router.post('/project/add', (req, res) => {
   Projet = require('../app/components/project/projet_db.js');
 
@@ -72,7 +72,7 @@ router.post('plan/:id/update', (req,res) =>{
   console.log(req.params[0].id);
   plan.set('id',parseInt(req.params[0].id));
   plan.set('rep3D',req.params[0].updated3D);
-  //plan.set('name','toto');
+
   plan.save();
 });
 
