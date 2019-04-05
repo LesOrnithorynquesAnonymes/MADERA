@@ -23,6 +23,7 @@ function createWindow() {
 
     // DevTool
     win.webContents.openDevTools();
+    win.setMenu(null);
 
     moment().locale('fr');
 
@@ -42,7 +43,7 @@ function createWindow() {
         win = null
     });
 
-    router.on('ready', () => {      
+    router.on('ready', () => {
       console.log('Setup router..');
     });
 }
