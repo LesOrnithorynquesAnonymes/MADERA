@@ -557,6 +557,8 @@ var mainControls = function (blueprint3d) {
  */
 
 $(document).ready(function () {
+
+
   var myStorage = window.localStorage;
   //var ok = myStorage.getItem('client');
   //console.log(ok);
@@ -582,6 +584,23 @@ $(document).ready(function () {
     // This serialization format needs work
     // Load a simple rectangle room
 
+
+    //Setup ROUTES
+    router.route('GET', '/gamme', function(err, res) {
+      console.log("Je suis dans la route");
+      console.log(res);
+
+      if(!err) {
+        for(var key in res) {
+          gamme = res[key];
+          $('#select-gamme').append($('<option>', {
+                value: gamme.id,
+                text: gamme.name
+          }));
+        }
+      }
+
+    });
 
     if(myStorage.getItem("3Drep") != 'null')
     {

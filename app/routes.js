@@ -88,4 +88,24 @@ router.post('/plan/add', (req, res) => {
   });
 
   plan.save();
-})
+});
+
+router.get('/gamme', (req, res) => {
+  Gamme = require('../app/components/gamme/gamme_db.js');
+
+  gamme = new Gamme();
+
+  gamme.find('all', function(err, rows, fields) {
+    res.json(rows);
+  });
+});
+
+router.get('/gamme/:id/modules', (req, res) => {
+  Module = require('../app/components/module/module_db.js');
+  console.log(req.params[0].gamme_id);
+  mod = new Module();
+
+  mod.find('all', {where: 'gamme_id = ' + req.params[0].gamme_id}, function(err,rows,fields){
+    res.json(rows);
+  });
+});
