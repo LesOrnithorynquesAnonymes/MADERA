@@ -23,7 +23,7 @@ function createWindow() {
 
     // DevTool
     win.webContents.openDevTools();
-    win.setMenu(null);
+    //win.setMenu(null);
 
     moment().locale('fr');
 

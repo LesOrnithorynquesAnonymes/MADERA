@@ -482,7 +482,21 @@ var mainControls = function (blueprint3d) {
   }
 
   function genereView() {
-
+    $("#main-controls").hide();
+    $("#camera-controls").hide();
+    console.log("generation des views 2D");
+    $("#floorplanner-controls").hide();
+    html2canvas(document.querySelector('#floorplanner-canvas')).then(canvas => {
+      image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+      var link = document.createElement('a');
+      link.download = "view-projet.png";
+      link.href = image;
+      link.click();
+      $("#floorplanner-controls").show();
+    });
+    $("#main-controls").show();
+    $("#camera-controls").show();
+    /*
     console.log("generation des views");
     $("#main-controls").hide();
     $("#camera-controls").hide();
@@ -503,9 +517,10 @@ var mainControls = function (blueprint3d) {
       //link.click();
       $("#main-controls").show();
       $("#camera-controls").show();
+
     });
     //Init Saver
-      /*
+
       let fs = require('fs');
       let path = require('path');
       var FileSaver = require('file-saver');
@@ -585,12 +600,14 @@ $(document).ready(function () {
     // Load a simple rectangle room
 
 
-    //Setup ROUTES
+    //Setup Gammes
     router.route('GET', '/gamme', function(err, res) {
-      console.log("Je suis dans la route");
-      console.log(res);
 
       if(!err) {
+        $('#select-gamme').append($('<option>', {
+              value: "",
+              text: ""
+        }));
         for(var key in res) {
           gamme = res[key];
           $('#select-gamme').append($('<option>', {
@@ -601,16 +618,77 @@ $(document).ready(function () {
       }
 
     });
+    //Setup modules
+    $('#select-gamme').change(function() {
+      $('#select-module').empty();
+      $('#component').empty();
+      $('#alink_1').attr("texture-url", "");
+      $('#thumblink_1').attr("src","");
+      $('#alink_2').attr("texture-url", "");
+      $('#thumblink_2').attr("src","");
+      if($(this).val() != "null")
+      {
+
+        router.route('GET', '/gamme/:id/modules', {gamme_id: parseInt($(this).val())}, function(err, res) {
+          if(!err){
+            $('#select-module').append($('<option>',{
+              value: "",
+              text: ""
+            }));
+            for(var key in res) {
+              mod = res[key];
+              console.log(mod.name);
+              $('#select-module').append($('<option>',{
+                value: mod.id,
+                text: mod.name
+              }));
+            }
+          }
+        });
+      }
+    });
+
+     $('#select-module').change(function(){
+      $('#alink_1').attr("texture-url", "");
+      $('#thumblink_1').attr("src","");
+      $('#alink_2').attr("texture-url", "");
+      $('#thumblink_2').attr("src","");
+      router.route('GET', '/modules/:id/components', {module_id: parseInt($(this).val())}, function(err, res) {
+        if(!err){
+          var i = 0
+          for(var key in res) {
+            comp = res[key];
+            console.log(comp.img_link);
+            if(i == 0)
+            {
+              $('#alink_1').attr("texture-url", comp.img_link);
+              $('#thumblink_1').attr("src",comp.img_thumbnail);
+            }
+            else
+            {
+              if(i == 1)
+              {
+                $('#alink_2').attr("texture-url", comp.img_link);
+                $('#thumblink_2').attr("src",comp.img_thumbnail);
+              }
+            }
+            i++;
+
+            //console.log(comp.nom);
+            //console.log("<div class=\"col-sm-6\" style=\"padding: 3px\"><a href=\"#\" class=\"thumbnail texture-select-thumbnail\" texture-url=\""+comp.img_link+"\" texture-stretch=\"false\" texture-scale=\"300\"><img alt=\"Thumbnail Laine de Verre\" src=\""+comp.img_thumbnail+"\"/></a></div>");
+            //$('#gamme-content').append("<div class=\"col-sm-6\" style=\"padding: 3px\"><a href=\"#\" class=\"thumbnail texture-select-thumbnail\" texture-url=\""+comp.img_link+"\" texture-stretch=\"true\" texture-scale=\"300\"><img src=\""+comp.img_thumbnail+"\"/></a></div>")
+          }
+        }
+      });
+    });
+
 
     if(myStorage.getItem("3Drep") != 'null')
     {
-      //console.log('3DRep not null');
-      //console.log(myStorage.getItem('3Drep'));
       blueprint3d.model.loadSerialized(myStorage.getItem('3Drep'));
     }
     else
     {
-        //console.log('3DRep null');
         blueprint3d.model.loadSerialized('{"floorplan":{"corners":{"f90da5e3-9e0e-eba7-173d-eb0b071e838e":{"x":204.85099999999989,"y":289.052},"da026c08-d76a-a944-8e7b-096b752da9ed":{"x":672.2109999999999,"y":289.052},"4e3d65cb-54c0-0681-28bf-bddcc7bdb571":{"x":672.2109999999999,"y":-178.308},"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2":{"x":204.85099999999989,"y":-178.308}},"walls":[{"corner1":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","corner2":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"f90da5e3-9e0e-eba7-173d-eb0b071e838e","corner2":"da026c08-d76a-a944-8e7b-096b752da9ed","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"da026c08-d76a-a944-8e7b-096b752da9ed","corner2":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}},{"corner1":"4e3d65cb-54c0-0681-28bf-bddcc7bdb571","corner2":"71d4f128-ae80-3d58-9bd2-711c6ce6cdf2","frontTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0},"backTexture":{"url":"rooms/textures/wallmap.png","stretch":true,"scale":0}}],"wallTextures":[],"floorTextures":{},"newFloorTextures":{}},"items":[]}');
     }
 

@@ -109,3 +109,23 @@ router.get('/gamme/:id/modules', (req, res) => {
     res.json(rows);
   });
 });
+
+router.get('/modules/:id/components', (req, res) => {
+  Composant = require('../app/components/composants/composant_db.js');
+  console.log(req.params[0].module_id);
+  comp = new Composant();
+
+  comp.find('all', {where: 'module_id = ' + req.params[0].module_id}, function(err,rows,fields){
+    res.json(rows);
+  });
+});
+
+router.get('/composants/:link/cost', (req, res) => {
+  Composant = require('../app/components/composants/composant_db.js');
+
+  comp = new Composant();
+  console.log('img_link LIKE \'' + req.params[0].img_link+ '\'');
+  comp.find('all', {where: 'img_link LIKE \'' + req.params[0].img_link+ '\''}, function(err,rows,fields){
+    res.json(rows);
+  });
+});

@@ -205,44 +205,156 @@ $(function () {
         require('jspdf-autotable');
 
 
-        //Doc Declaration
-
-
         //Get all Plan in projet
 
         var project_id = $('li[id^=project_].active').attr('id').replace('project_','');
         router.route('GET', 'project/:id/plans', {projet_id: project_id}, function(err, res){
           var doc = new jsPDF();
+
+
+
+                    //* * * * * * * PAGE DE GARDE * * * * * * *
+                    doc.setFontSize(15);
+                    doc.text('Devis MADERA', 40, 40); // Titre Proc
+                    doc.setFontSize(13);
+                    doc.text('{Client | Commercial }', 40, 48); // Cs Proc
+                    doc.setFontSize(11);
+                    doc.line(20, 25, 180, 25); // horizontal line //Séparteur
+
+                    var today = new Date();
+                    var dd = today.getDate();
+
+                    var mm = today.getMonth()+1;
+                    var yyyy = today.getFullYear();
+                    if(dd<10)
+                    {
+                        dd='0'+dd;
+                    }
+
+                    if(mm<10)
+                    {
+                        mm='0'+mm;
+                    }
+                    today = dd+'/'+mm+'/'+yyyy;
+
+                    doc.text('Devis généré : ' + today,135,270); // Date du jour de génération
+                    doc.addPage();
+
+
           if(!err)
           {
-            console.log("not error");
+            var totaldevis = 0;
+
+            var allPlan = new Array();
             for(var key in res) {
+              var totalperplan = 0;
               plan = res[key];
               doc.autoTable({
                 theme: 'striped',
                 margin:{left:25},
                 styles:{fontSize: 8},
-                head:[['name','description','created']],
+                head:[['Plan : ' + plan.name, 'Description : ' + plan.description, 'Création : ' + plan.created]],
                 body:[
-                  [plan.name,plan.description,plan.created],
+
                 ]
               });
-            }
-          }
-          doc.save('devis.pdf');
+              var murDuPlan = new Array();
+              var jsonPlan = JSON.parse(plan.rep3D);
+              var items = jsonPlan.floorplan;
+              var walls = items.walls;
+                for(var aWall in walls){
+                  var img_link;
 
-            /*
+                  wall = walls[aWall];
+                  var textures = wall.backTexture;
+                  img_link = textures.url;
+
+                  var corner1 = wall.corner1;
+
+                  var corner2 = wall.corner2;
+
+                  var x;
+                  var y;
+                  var xx;
+                  var yy;
+
+                  var corners = items.corners
+
+                  for(var aCorner in corners){
+                    corn = corners[aCorner];
+                    if(String(corner1) == String(aCorner)){
+                      x = corn.x;
+                      y = corn.y;
+                    }
+                    if(String(corner2) == String(aCorner)){
+                      xx = corn.x;
+                      yy = corn.y;
+                    }
+                  }
+                  var mur = new Array();
+                  mur['x'] = x;
+                  mur['y'] = y;
+                  mur['xx'] = xx;
+                  mur['yy'] = yy;
+                  mur['url'] = img_link;
+                  mur['distance'] = Math.sqrt(Math.pow((y-x),2)+Math.pow((yy-xx),2)) * 0.0254;
+
+                  var split_url_by_slash = img_link.split("/");
+                  var last_element = split_url_by_slash[split_url_by_slash.length-1];
+                  var split_url_by_under = last_element.split("_");
+                  mur['name'] = split_url_by_under[1] + ' ' + split_url_by_under[2];
+                  if(split_url_by_under[0] != "wallmap.png")
+                  {
+                    mur['pu'] = split_url_by_under[0];
+                    mur['couttotal'] = parseInt(split_url_by_under[0]) * mur['distance'];
+                  }
+
+
+
+                  if(!mur['name'].includes("undefined"))
+                  {
+                      murDuPlan.push(mur);
+                  }
+
+                }
+
+                for(var key in murDuPlan)
+                {
+                  mur = murDuPlan[key];
+                  totalperplan = totalperplan + Math.round(mur.couttotal * 100) / 100
+                  doc.autoTable({
+                    theme: 'plain',
+                    margin:{left:30},
+                    styles:{fontSize: 8},
+                    head:[['Nom','distance','Prix Unitaire (M²)','Coût Total']],
+                    body:[
+                        [mur.name,mur.distance, mur.pu, Math.round(mur.couttotal * 100) / 100 + " €"],
+                    ]
+                  });
+                }
+
+                doc.autoTable({
+                  theme:'grid',
+                  margin:{left:35},
+                  styles:{fontSize:8},
+                  head:[['Cout du plan : ' + totalperplan + " €"]]
+                });
+                allPlan.push(murDuPlan);
+                totaldevis = totaldevis + totalperplan;
+              }
+
+              console.log(allPlan);
+
+
+            }
             doc.autoTable({
-              theme: 'grid',
-              margin:{left:25},
-              styles:{fontSize: 8},
-              head:[['','','']],
-              body:[
-                [''],
-              ]
+              theme:'grid',
+              margin:{left:35},
+              styles:{fontSize:12},
+              head:[['Cout Total : ' + totaldevis + " €"]]
             });
-            */
-          });
+          doc.save('devis.pdf');
+        });
 
     });
 
